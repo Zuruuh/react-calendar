@@ -1,6 +1,6 @@
 ## Software requirements
 
-- [Bun](https://bun.sh) ^1.0.20
+- [Bun](https://bun.sh) ^1.0.25
 
 ## Installation
 
