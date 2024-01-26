@@ -4,7 +4,6 @@ import packageJson from './package.json' assert { type: 'json' };
 import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
 
-// @ts-ignore Bun type definition is buggy for some reason
 export default defineConfig((env) => {
   return {
     plugins: [
