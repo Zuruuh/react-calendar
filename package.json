@@ -27,7 +27,10 @@
     "lint:typescript": "tsc --noEmit true --emitDeclarationOnly false",
     "format": "biome format .",
     "preview": "ladle preview",
-    "preview:build": "ladle build"
+    "preview:build": "ladle build",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "peerDependencies": {
     "dayjs": "^1.11.10",
@@ -51,6 +54,7 @@
     "sass": "^1.70.0",
     "typescript": "^5.3.3",
     "vite": "^5.0.12",
-    "vite-plugin-dts": "^3.7.2"
+    "vite-plugin-dts": "^3.7.2",
+    "vitepress": "^1.0.0-rc.40"
   }
 }

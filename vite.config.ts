@@ -1,4 +1,4 @@
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 import packageJson from './package.json' assert { type: 'json' };
 import react from '@vitejs/plugin-react';

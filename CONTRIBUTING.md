@@ -8,4 +8,4 @@ Fork and clone the project locally, then install the dependencies with `bun inst
 
 ## Linting & Formatting
 
-This project uses [Biome.js](https://biomejs.dev) both for formatting and linting. Use it with the scripts `bun lint` and `bun format`
+This project uses [Biome.js](https://biomejs.dev) both for formatting and linting. Use it with the scripts `bun lint:biome` and `bun format`

@@ -1,5 +1,5 @@
 import styles from './Slack.module.scss';
-import { type Story } from '@ladle/react';
+import type { Story } from '@ladle/react';
 import { useCallback, useState } from 'react';
 import { DatePicker, type DatePickerState, DayInnerProps } from '../../';
 import clsx from 'clsx';

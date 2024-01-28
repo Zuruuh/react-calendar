@@ -74,7 +74,7 @@ const MyCustomCalendar: FC<{ showWeekNumbers: boolean }> = ({
   );
 };
 
-export const Simple: Story = () => {
+export const Simple: Story = (): React.ReactNode => {
   const [date, setDate] = useState<Dayjs | null>(null);
 
   return (

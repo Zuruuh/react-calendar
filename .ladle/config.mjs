@@ -1,4 +1,4 @@
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 
 /** @type {import('@ladle/react').UserConfig} */
 export default {

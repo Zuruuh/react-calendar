@@ -1,4 +1,4 @@
-import { type FC, type ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
 import { useWeekContext } from '../context/WeekContext';
 import {
   type DatePickerCalendarOverlap,
@@ -89,7 +89,7 @@ export const Week: FC<WeekProps> = ({ children }) => {
 
   const initialOffset =
     overlap === 'no-overlap'
-      ? parseInt(
+      ? Number.parseInt(
           temporarySelectedDate
             .startOf('month')
             .diff(
@@ -106,7 +106,7 @@ export const Week: FC<WeekProps> = ({ children }) => {
     .startOf('week')
     .add(initialOffset, 'days');
 
-  const partialDays: { value: DayContextState; key: string }[] = [];
+  const partialDays: Array<{ value: DayContextState; key: string }> = [];
 
   for (let i = 0; i < 7; i++) {
     const day = date.add(i, 'days');

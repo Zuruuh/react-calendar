@@ -1,6 +1,6 @@
 import '@fontsource/poppins';
 import type { GlobalProvider } from '@ladle/react';
-import React, { StrictMode } from 'react';
+import { StrictMode } from 'react';
 
 import day from 'dayjs';
 import week from 'dayjs/plugin/weekOfYear';

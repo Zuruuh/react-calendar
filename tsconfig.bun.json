@@ -6,5 +6,5 @@
     "allowSyntheticDefaultImports": true,
     "types": ["bun-types"]
   },
-  "include": ["vite.config.ts", "package.json"]
+  "include": ["vite.config.ts", ".ladle/vite.config.ts", "package.json"]
 }
