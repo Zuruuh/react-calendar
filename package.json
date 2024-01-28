@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/package.json",
   "name": "@zuruuh/react-date-picker",
   "private": false,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "types": "./dist/index.d.ts",
   "license": "MIT",
