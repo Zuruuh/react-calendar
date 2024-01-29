@@ -21,6 +21,13 @@ export default defineConfig({
       { name: 'og:image', content: 'https://date-picker.zuruh.dev/og.png' },
     ],
     ['meta', { name: 'og:site_name', content: 'React Date Picker' }],
+    [
+      'meta',
+      {
+        name: 'google-site-verification',
+        content: 'LZC1PtnNXi67eyaRqSTOpaMrZudEdiwnPq8hB-CygX8',
+      },
+    ],
   ],
 
   themeConfig: {
