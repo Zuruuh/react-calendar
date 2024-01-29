@@ -26,6 +26,7 @@ export default defineConfig({
         items: [
           { text: 'Installation', link: '/installation' },
           { text: 'Philosophy', link: '/philosophy' },
+          { text: 'Why this library ?', link: '/why-this-library' },
           { text: 'Examples', link: '/examples' },
         ],
       },
