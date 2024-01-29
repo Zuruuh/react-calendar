@@ -7,6 +7,10 @@ export default defineConfig({
   cleanUrls: true,
   lastUpdated: true,
 
+  sitemap: {
+    hostname: 'https://date-picker.zuruh.dev'
+  },
+
   head: [
     ['link', { rel: 'icon', href: '/favicon.svg' }],
     ['meta', { name: 'theme-color', content: '#61DAFB' }],
