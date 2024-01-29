@@ -46,8 +46,8 @@ The behavior the calendar should have when it comes to rendering days that are o
 - `"no-overlap"`: Do not show first and last days of next/previous months. This will shift the calendar by a few days in most cases (see example below)
 - `"no-overlap-with-offset"`: Do not show the last days of the previous but keep the offset so there is not shift
 
-> [!INFO]
-> It may looks like you could achieve the behavior of `"no-overlap-with-offset"` with the `"overlap"` mode,
+> [!WARNING]
+> It may looks like you could achieve manually the behavior of `"no-overlap-with-offset"` with the `"overlap"` mode,
 > but you really should use the one you need as it changes the way rounded corners are calculated
 
 Take a look at this example showing what each render mode outputs:

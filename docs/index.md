@@ -4,7 +4,7 @@ layout: home
 hero:
   name: "Zuruuh's Date Picker"
   text: "Customizable date picker for React"
-  tagline: Based on DayJS
+  tagline: Powered by DayJS
   image:
     src: /favicon.svg
     alt: calendar icon

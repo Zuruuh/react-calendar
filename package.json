@@ -6,6 +6,7 @@
   "type": "module",
   "types": "./dist/index.d.ts",
   "license": "MIT",
+  "homepage": "https://date-picker.zuruh.dev",
   "files": [
     "dist",
     "package.json",
