@@ -42,7 +42,7 @@
   "devDependencies": {
     "@biomejs/biome": "^1.5.3",
     "@fontsource/poppins": "^5.0.8",
-    "@happy-dom/global-registrator": "^13.3.1",
+    "@happy-dom/global-registrator": "^13.3.4",
     "@ladle/react": "^4.0.2",
     "@testing-library/dom": "^9.3.4",
     "@testing-library/react": "^14.1.2",
