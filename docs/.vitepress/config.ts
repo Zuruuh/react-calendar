@@ -8,7 +8,7 @@ export default defineConfig({
   lastUpdated: true,
 
   sitemap: {
-    hostname: 'https://date-picker.zuruh.dev'
+    hostname: 'https://date-picker.zuruh.dev',
   },
 
   head: [
