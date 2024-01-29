@@ -102,16 +102,16 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-	calendar: {
-		display: "flex",
-	},
-	week: {
-		display: "flex",
-		flexDirection: "row",
-	},
-	day: {
-		width: "32px",
-		height: "32px",
-	},
-}
+  calendar: {
+    display: "flex",
+  },
+  week: {
+    display: "flex",
+    flexDirection: "row",
+  },
+  day: {
+    width: "32px",
+    height: "32px",
+  },
+});
 ```
