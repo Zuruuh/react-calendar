@@ -48,7 +48,10 @@ export default defineConfig({
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Zuruuh/react-date-picker' },
-      { icon: 'npm', link: 'https://www.npmjs.com/package/@zuruuh/react-date-picker' },
+      {
+        icon: 'npm',
+        link: 'https://www.npmjs.com/package/@zuruuh/react-date-picker',
+      },
     ],
 
     search: {
