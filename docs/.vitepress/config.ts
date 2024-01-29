@@ -8,9 +8,9 @@ export default defineConfig({
   lastUpdated: true,
 
   head: [
-    ['link', { rel: 'icon', href: '/favicon.svg'}],
-    ['meta', { name: 'theme-color', content: '#61DAFB'}],
-    ['meta', { name: 'og:site_name', content: 'React Date Picker' }]
+    ['link', { rel: 'icon', href: '/favicon.svg' }],
+    ['meta', { name: 'theme-color', content: '#61DAFB' }],
+    ['meta', { name: 'og:site_name', content: 'React Date Picker' }],
   ],
 
   themeConfig: {
@@ -37,7 +37,7 @@ export default defineConfig({
           { text: 'Week', link: '/reference/week' },
           { text: 'Day', link: '/reference/day' },
         ],
-      }
+      },
     ],
 
     socialLinks: [
