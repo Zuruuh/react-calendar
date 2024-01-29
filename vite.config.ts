@@ -7,7 +7,6 @@ import dts from 'vite-plugin-dts';
 export default defineConfig({
   plugins: [react(), dts({ insertTypesEntry: true, rollupTypes: true })],
   build: {
-    sourcemap: true,
     lib: {
       entry: resolve(__dirname, 'src', 'index.ts'),
       name: '@zuruuh/react-date-picker',
