@@ -16,7 +16,10 @@ export default defineConfig({
     ['meta', { name: 'theme-color', content: '#61DAFB' }],
     ['meta', { name: 'og:type', content: 'website' }],
     ['meta', { name: 'og:locale', content: 'en' }],
-    ['meta', { name: 'og:image', content: 'https://date-picker.zuruh.dev/og.png' }],
+    [
+      'meta',
+      { name: 'og:image', content: 'https://date-picker.zuruh.dev/og.png' },
+    ],
     ['meta', { name: 'og:site_name', content: 'React Date Picker' }],
   ],
 
