@@ -2,22 +2,34 @@
 layout: home
 
 hero:
-  name: "@zuruuh/react-date-picker"
-  text: "A fully customizable date picker component for React"
-  tagline: Based on day.js
+  name: "Zuruuh's Date Picker"
+  text: "Customizable date picker for React"
+  tagline: Based on DayJS
+  image:
+    src: /favicon.svg
+    alt: calendar icon
   actions:
     - theme: brand
       text: Getting started
-      link: /getting-started/simple-example
+      link: /installation
     - theme: alt
-      text: Installation
-      link: /getting-started/installation
+      text: Philosophy
+      link: /philosophy
+    - theme: alt
+      text: Examples
+      link: /examples
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Headless
+    details: 0 html shipped to your browser except yours
+    icon: ☸️
+  - title: Cross-platform
+    details: Usable with your favorite react runtimes, including react-native
+    icon: 📱
+  - title: Customizable
+    details: Powerful api with total control over your date and component behavior
+    icon: ✍️
+  - title: Lightweight
+    details: Only depends on react and dayjs, weights around ~10kb after gzip
+    icon: 🪶
 ---

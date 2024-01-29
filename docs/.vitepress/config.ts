@@ -1,26 +1,43 @@
 import { defineConfig } from 'vitepress';
 
-// https://vitepress.dev/reference/site-config
 export default defineConfig({
   lang: 'en-US',
   title: '@zuruuh/react-date-picker',
   description: 'A fully customizable date picker component for React',
   cleanUrls: true,
   lastUpdated: true,
+
+  head: [
+    ['link', { rel: 'icon', href: '/favicon.svg'}],
+    ['meta', { name: 'theme-color', content: '#61DAFB'}],
+    ['meta', { name: 'og:site_name', content: 'React Date Picker' }]
+  ],
+
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Getting Started', link: '/getting-started/simple-example' },
+      { text: 'Getting Started', link: '/installation' },
+      { text: 'API Reference', link: '/reference/date-picker' },
     ],
 
     sidebar: [
       {
         text: 'Getting started',
         items: [
-          { text: 'Installation', link: '/getting-started/installation' },
-          { text: 'Simple example', link: '/getting-started/simple-example' },
+          { text: 'Installation', link: '/installation' },
+          { text: 'Philosophy', link: '/philosophy' },
+          { text: 'Examples', link: '/examples' },
         ],
       },
+      {
+        text: 'Reference',
+        items: [
+          { text: 'DatePicker', link: '/reference/date-picker' },
+          { text: 'Calendar', link: '/reference/calendar' },
+          { text: 'Week', link: '/reference/week' },
+          { text: 'Day', link: '/reference/day' },
+        ],
+      }
     ],
 
     socialLinks: [
