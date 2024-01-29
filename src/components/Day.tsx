@@ -29,7 +29,7 @@ export const Day: FC<DayProps> = ({ children }) => {
     maximumSelectableDate,
     overlap,
     dayjs,
-    altDateFormat
+    altDateFormat,
   } = useDatePickerContext();
   const { date, corners } = useDayContext();
 
