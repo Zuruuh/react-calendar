@@ -130,7 +130,7 @@ It contains handlers to advance to prev/next month and prev/next year.
 This is just a thin abstraction over [`setTemporarySelectedDate`](#settemporaryselecteddate)
 and [`minimumSelectableDate`](#minimumselectabledate)/[`maximumSelectableDate`](#maximumselectabledate).
 It exists only because it's a really frequent use case, but this could very easily be re-implemented
-on user-land since you already have access to all functions and datas.
+on user-land since you already have access to all functions and data.
 
 #### `DatePickerControls`
 

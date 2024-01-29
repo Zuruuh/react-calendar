@@ -4,7 +4,7 @@
 
 ## Installation
 
-Fork and clone the project locally, then install the dependencies with `bun install` and run the tests to ensure everythings works correctly (with `bun test`).
+Fork and clone the project locally, then install the dependencies with `bun install` and run the tests to ensure everything works correctly (with `bun test`).
 
 ## Linting & Formatting
 

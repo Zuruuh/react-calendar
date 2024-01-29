@@ -2,41 +2,40 @@ name: Tests and static analysis
 
 on:
   push:
-    branches: [ "dev" ]
+    branches: ["dev"]
   pull_request:
-    branches: [ "dev" ]
+    branches: ["dev"]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: 🛒 Checkout branch
-      uses: actions/checkout@v3
+      - name: 🛒 Checkout branch
+        uses: actions/checkout@v3
 
-    - name: ✨ Install bun
-      uses: oven-sh/setup-bun@v1
-      with:
-        bun-version: 1.0.21
+      - name: ✨ Install bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: 1.0.25
 
-    - uses: actions/cache@v3
-      name: Setup deps cache
-      with:
-        path: ${{ env.STORE_PATH }}
-        key: ${{ runner.os }}-modules-${{ hashFiles('**/bun.lockb') }}
-        restore-keys: |
-          ${{ runner.os }}-modules-
+      - uses: actions/cache@v3
+        name: 📦 Setup deps cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/bun.lockb') }}
+          restore-keys: |
+            ${{ runner.os }}-modules-
 
-    - name: ➕ Install dependencies
-      run: bun install --frozen-lockfile
+      - name: ➕ Install dependencies
+        run: bun install --frozen-lockfile
 
-    - name: 🚨 Check formatting
-      run: bun run format
+      - name: 🚨 Check formatting
+        run: bun run format
 
-    - name: 🚨 Lint
-      if: always()
-      run: bun run lint
+      - name: 🚨 Lint
+        if: always()
+        run: bun run lint
 
-    - name: 🚨 Tests
-      if: always()
-      run: bun test
+      - name: 🧪 Tests
+        if: always()
+        run: bun test

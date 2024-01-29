@@ -18,10 +18,10 @@ jobs:
       - name: ✨ Install bun
         uses: oven-sh/setup-bun@v1
         with:
-          bun-version: 1.0.21
+          bun-version: 1.0.25
 
       - uses: actions/cache@v3
-        name: Setup deps cache
+        name: 📦 Setup deps cache
         with:
           path: ${{ env.STORE_PATH }}
           key: ${{ runner.os }}-modules-${{ hashFiles('**/bun.lockb') }}

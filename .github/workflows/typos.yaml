@@ -1,0 +1,16 @@
+name: External static analyses
+on:
+  push:
+    branches: ["dev"]
+  pull_request:
+    branches: ["dev"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛒 Checkout branch
+        uses: actions/checkout@v3
+
+      - name: 📖 Check for typos
+        uses: crate-ci/typos@master
