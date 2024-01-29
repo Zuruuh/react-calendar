@@ -70,35 +70,35 @@ dayjs.extend(locale);
 dayjs.locale("fr");
 
 export default function App() {
-	const [selectedDate, setSelectedDate] = useState(null);
-	return (
-		<View style={styles.calendar}>
-			<DatePicker.Root
-				selectedDate={selectedDate}
-				setSelectedDate={setSelectedDate}
-			>
-				<DatePicker.Calendar>
-					<div style={styles.week}>
-						<DatePicker.Week>
-							<div style={styles.day}>
-								<DatePicker.Day>
-									{({ onClick: onDayClick, date: dayDate, isOutOfRange }) => (
-										<button
-											type="button"
-											disabled={isOutOfRange}
-											onClick={onDayClick}
-										>
-											{dayDate.date()}
-										</button>
-									)}
-								</DatePicker.Day>
-							</div>
-						</DatePicker.Week>
-					</div>
-				</DatePicker.Calendar>
-			</DatePicker.Root>
-		</View>
-	);
+  const [selectedDate, setSelectedDate] = useState(null);
+  return (
+    <View style={styles.calendar}>
+      <DatePicker.Root
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
+      >
+        <DatePicker.Calendar>
+          <div style={styles.week}>
+            <DatePicker.Week>
+              <div style={styles.day}>
+                <DatePicker.Day>
+                  {({ onClick: onDayClick, date: dayDate, isOutOfRange }) => (
+                    <button
+                      type="button"
+                      disabled={isOutOfRange}
+                      onClick={onDayClick}
+                    >
+                      {dayDate.date()}
+                    </button>
+                  )}
+                </DatePicker.Day>
+              </div>
+            </DatePicker.Week>
+          </div>
+        </DatePicker.Calendar>
+      </DatePicker.Root>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
