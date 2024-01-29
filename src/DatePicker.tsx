@@ -17,6 +17,7 @@ export interface DatePickerProps {
   minimumSelectableDate?: Dayjs;
   maximumSelectableDate?: Dayjs;
   overlap?: DatePickerCalendarOverlap;
+  altDateFormat?: string;
   children: ReactNode | ((props: DatePickerState) => ReactNode);
 }
 
@@ -53,6 +54,7 @@ const DatePicker: FC<DatePickerProps> = ({
   minimumSelectableDate,
   maximumSelectableDate,
   overlap = 'overlap',
+  altDateFormat = 'dddd D MMMM YYYY',
   dayjs = () => day(),
 }) => {
   const dayFactory = useCallback(
@@ -96,6 +98,7 @@ const DatePicker: FC<DatePickerProps> = ({
       prevYear: controlFactory(false, 'year', minimumSelectableDate),
     },
     overlap,
+    altDateFormat,
     dayjs: dayFactory,
   };
 

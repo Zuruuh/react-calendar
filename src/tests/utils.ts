@@ -51,6 +51,7 @@ export function createDatePickerContextState(
       nextMonth: defaultControl,
       prevMonth: defaultControl,
     },
+    altDateFormat: 'dddd D MMMM YYYY',
     ...args,
   };
 }

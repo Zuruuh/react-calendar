@@ -29,6 +29,7 @@ export interface DatePickerState {
   controls: DatePickerControls;
   overlap: DatePickerCalendarOverlap;
   dayjs(): Dayjs;
+  altDateFormat: string;
 }
 
 /**
