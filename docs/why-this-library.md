@@ -8,18 +8,16 @@ Browsers [supports \<input type="date" />](https://caniuse.com/input-datetime) s
 it solves almost all cases with the simplest developper experience you could ever imagine (adding `type="date"` to your input)
 with great mouse and keyboard control, accessibility, etc...
 
-**BUT**, nevertheless, the native implementation does not provide all the features you might need for your app.
+**BUT**, nonetheless, the native implementation does not provide all the features you might need for your app.
 Let's review the features missing from the native date input implementation:
 
-### Selecting a range of dates
-<small>Library implementation: ❌ Not implemented yet (see [#16](https://github.com/Zuruuh/react-date-picker/issues/16))</small>
+### Selecting a range of dates <Badge type="danger" text="❌ Not implemented yet (see #16)" />
 
 This is probably the reason most developpers use a library for date picking. Native html inputs doesn't allow you to
 select multiple dates on a single calendar. This can easily be fixed by using two separate inputs though,
-but the user experience is far worse (personal opinion) with the second option.
+but that also means you're sacrificing some of the user experience.
 
-### Picking multiple dates
-<small>Library implementation: ❌ Not implemented yet (see [#17](https://github.com/Zuruuh/react-date-picker/issues/17))</small>
+### Picking multiple dates <Badge type="danger" text="❌ Not implemented yet (see #17)"/>
 
 Picking an undetermined amount of dates can be quite painful using only html inputs,
 as forms fields are supposed to send a single value per input.
@@ -27,13 +25,12 @@ The native solution would be to have controls to add/remove new date inputs,
 but again, the user experience is greatly deteriored
 as it takes a lot more time to add a large amount of dates.
 Whereas a custom datepicker would allow you to simply click the days you want,
-maybe even a week or a month, and you'd be done.
+maybe even a week or a month, and you'd be one.
 
-### Styling
-<small>Library implementation: ✅ Since v0.1.0</small>
+### Styling <Badge type="tip" text="✅ Since v0.1.0"/>
 
 Styling native browser components like date pickers and scrollbars can be quite annoying
-since you need to ensure your solution works on all browsers, and maybe even impossible
+since you need to ensure your solution works on all browsers, and may even be impossible
 in some cases. Since this library simply uses your own html, you can style it however you want.
 
 ## In short
