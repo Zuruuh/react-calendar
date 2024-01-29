@@ -17,7 +17,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Getting Started', link: '/installation' },
-      { text: 'API Reference', link: '/reference/date-picker' },
+      { text: 'API Reference', link: '/reference' },
     ],
 
     sidebar: [
@@ -30,8 +30,9 @@ export default defineConfig({
         ],
       },
       {
-        text: 'Reference',
+        text: 'API Reference',
         items: [
+          { text: 'Index', link: '/reference' },
           { text: 'DatePicker', link: '/reference/date-picker' },
           { text: 'Calendar', link: '/reference/calendar' },
           { text: 'Week', link: '/reference/week' },

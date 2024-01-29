@@ -77,9 +77,9 @@ function generateCorners({
       topLeft;
     }
   } else if (overlap === 'no-overlap') {
-    //
+    // TODO: check if something is needed here
   }
-  //
+
   return { topLeft, topRight, bottomLeft, bottomRight };
 }
 
