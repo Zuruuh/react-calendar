@@ -1,7 +1,8 @@
 # Why you might need this library
+
 While reading this documentation, you might ask yourself the following question:
 
-> But **why** would I need to install *yet another* dependency for selecting dates when my browser does just fine ?
+> But **why** would I need to install _yet another_ dependency for selecting dates when my browser does just fine ?
 
 And this is a completely valid question!
 Browsers [supports \<input type="date" />](https://caniuse.com/input-datetime) since quite a while now and
@@ -33,7 +34,14 @@ Styling native browser components like date pickers and scrollbars can be quite 
 since you need to ensure your solution works on all browsers, and may even be impossible
 in some cases. Since this library simply uses your own html, you can style it however you want.
 
+### Rendering custom data <Badge type="tip" text="✅ Since v0.1.0"/>
+
+If you need to render something different than simply the date, then you'd be stuck if you went with native html date pickers.
+Since this library forces you to choose how you render data, there
+
 ## In short
+
 Do you have any of the problems listed above ?
- - If not, then you'll do just fine with `<input type="date" />` 😊
- - Else, head to the [Getting Started](/installation) section and start building the date picker of your dreams 🚀
+
+- If not, then you'll do just fine with `<input type="date" />` 😊
+- Else, head to the [Getting Started](/installation) section and start building the date picker of your dreams 🚀

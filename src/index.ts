@@ -1,16 +1,15 @@
-export type { DatePickerProps } from './DatePicker';
-export { default as DatePicker } from './DatePicker';
+export type { CalendarProps } from './Calendar';
+export { default as Calendar } from './Calendar';
 export type { DayInnerProps } from './components/Day';
-export type { CalendarInnerProps } from './components/Calendar';
-
+export type { WeeksInnerProps } from './components/Weeks';
 export type { WeekContextState } from './context/WeekContext';
 export type { DayContextState, DayCorners } from './context/DayContext';
 export type {
-  DatePickerState,
-  DatePickerControls,
-  DatePickerControl,
-  DatePickerCalendarOverlap,
-} from './context/DatePickerContext';
+  CalendarState,
+  CalendarControls,
+  CalendarControl,
+  CalendarOverlap,
+} from './context/CalendarContext';
 
 export type { Setter } from './types/Setter';
 export type { WeekNumber, WeekNumbers } from './types/WeekNumber';

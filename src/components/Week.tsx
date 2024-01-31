@@ -1,9 +1,9 @@
 import type { FC, ReactNode } from 'react';
 import { useWeekContext } from '../context/WeekContext';
 import {
-  type DatePickerCalendarOverlap,
-  useDatePickerContext,
-} from '../context/DatePickerContext';
+  type CalendarOverlap,
+  useCalendarContext,
+} from '../context/CalendarContext';
 import {
   DayContext,
   type DayContextState,
@@ -25,7 +25,7 @@ function generateCorners({
 }: {
   date: Dayjs;
   startOfMonth: Dayjs;
-  overlap: DatePickerCalendarOverlap;
+  overlap: CalendarOverlap;
   dayIndex: number;
   weekIndex: number;
   totalWeeks: number;
@@ -85,7 +85,7 @@ function generateCorners({
 
 export const Week: FC<WeekProps> = ({ children }) => {
   const { weekNumbers, weekIndex, totalWeeks } = useWeekContext();
-  const { temporarySelectedDate, overlap, dayjs } = useDatePickerContext();
+  const { temporarySelectedDate, overlap, dayjs } = useCalendarContext();
 
   const initialOffset =
     overlap === 'no-overlap'

@@ -8,24 +8,25 @@ and [Day.js](https://www.npmjs.com/package/dayjs).
 ::: code-group
 
 ```sh [npm]
-$ npm add react dayjs @zuruuh/react-date-picker
+$ npm add react dayjs @zuruuh/react-calendar
 ```
 
 ```sh [pnpm]
-$ pnpm add react dayjs @zuruuh/react-date-picker
+$ pnpm add react dayjs @zuruuh/react-calendar
 ```
 
 ```sh [yarn]
-$ yarn add react dayjs @zuruuh/react-date-picker
+$ yarn add react dayjs @zuruuh/react-calendar
 ```
 
 ```sh [bun]
-$ bun add react dayjs @zuruuh/react-date-picker
+$ bun add react dayjs @zuruuh/react-calendar
 ```
 
 :::
 
 ## Dayjs configuration
+
 We will also require some dayjs plugin you will have to enable manually like so
 
 ```ts
@@ -41,6 +42,7 @@ dayjs.extend(locale);
 ```
 
 ## Dayjs locale
+
 You can also enable a day.js locale to default alt format respects your language's format.
 It also correctly sets some regional data like the first day of the week in said country.
 You can find all locales supported by dayjs [on their github repository](https://github.com/iamkun/dayjs/tree/dev/src/locale)

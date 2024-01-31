@@ -1,24 +1,24 @@
 import { useCallback, useState, type FC, type ReactNode } from 'react';
 import {
-  DatePickerContext,
-  type DatePickerCalendarOverlap,
-  type DatePickerState,
-} from './context/DatePickerContext';
+  CalendarContext,
+  type CalendarOverlap,
+  type CalendarState,
+} from './context/CalendarContext';
 import type { Setter } from './types/Setter';
-import { Calendar } from './components/Calendar';
+import { Weeks } from './components/Weeks';
 import { Week } from './components/Week';
 import { Day } from './components/Day';
 import day, { type Dayjs } from 'dayjs';
 
-export interface DatePickerProps {
+export interface CalendarProps {
   selectedDate: Dayjs | null;
   setSelectedDate: Setter<Dayjs | null>;
   dayjs?(): Dayjs;
   minimumSelectableDate?: Dayjs;
   maximumSelectableDate?: Dayjs;
-  overlap?: DatePickerCalendarOverlap;
+  overlap?: CalendarOverlap;
   altDateFormat?: string;
-  children: ReactNode | ((props: DatePickerState) => ReactNode);
+  children: ReactNode | ((props: CalendarState) => ReactNode);
 }
 
 /**
@@ -47,7 +47,7 @@ export function useControlFactory(
   );
 }
 
-const DatePicker: FC<DatePickerProps> = ({
+const Calendar: FC<CalendarProps> = ({
   children,
   selectedDate,
   setSelectedDate,
@@ -84,7 +84,7 @@ const DatePicker: FC<DatePickerProps> = ({
     .minute(59)
     .hour(23);
 
-  const props: DatePickerState = {
+  const props: CalendarState = {
     selectedDate,
     setSelectedDate,
     temporarySelectedDate,
@@ -103,15 +103,15 @@ const DatePicker: FC<DatePickerProps> = ({
   };
 
   return (
-    <DatePickerContext.Provider value={props}>
+    <CalendarContext.Provider value={props}>
       {typeof children === 'function' ? children(props) : children}
-    </DatePickerContext.Provider>
+    </CalendarContext.Provider>
   );
 };
 
 export default {
-  Root: DatePicker,
-  Calendar,
+  Root: Calendar,
+  Weeks,
   Week,
   Day,
 };

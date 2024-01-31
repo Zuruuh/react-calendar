@@ -2,32 +2,32 @@ import { createContext, useContext } from 'react';
 import type { Setter } from '../types/Setter';
 import type { Dayjs } from 'dayjs';
 
-export type DatePickerCalendarOverlap =
+export type CalendarOverlap =
   | 'overlap'
   | 'no-overlap'
   | 'no-overlap-with-offset';
 
-export interface DatePickerControl {
+export interface CalendarControl {
   execute(): void;
   disabled: boolean;
 }
 
-export interface DatePickerControls {
-  nextMonth: DatePickerControl;
-  nextYear: DatePickerControl;
-  prevMonth: DatePickerControl;
-  prevYear: DatePickerControl;
+export interface CalendarControls {
+  nextMonth: CalendarControl;
+  nextYear: CalendarControl;
+  prevMonth: CalendarControl;
+  prevYear: CalendarControl;
 }
 
-export interface DatePickerState {
+export interface CalendarState {
   selectedDate: Dayjs | null;
   setSelectedDate(date: Dayjs | null): void;
   temporarySelectedDate: Dayjs;
   setTemporarySelectedDate: Setter<Dayjs>;
   minimumSelectableDate: Dayjs;
   maximumSelectableDate: Dayjs;
-  controls: DatePickerControls;
-  overlap: DatePickerCalendarOverlap;
+  controls: CalendarControls;
+  overlap: CalendarOverlap;
   dayjs(): Dayjs;
   altDateFormat: string;
 }
@@ -35,20 +35,20 @@ export interface DatePickerState {
 /**
  * @internal
  */
-export const DatePickerContext = createContext<DatePickerState | undefined>(
+export const CalendarContext = createContext<CalendarState | undefined>(
   undefined,
 );
 
 /**
  * @internal
  */
-export function useDatePickerContext(): DatePickerState {
-  const state = useContext(DatePickerContext);
+export function useCalendarContext(): CalendarState {
+  const state = useContext(CalendarContext);
   if (state === undefined) {
     throw new Error(
       'Uninitialized date picker context used! ' +
-        'You probably tried to render a Date Picker (like <DatePicker.Calendar>) ' +
-        'element without wrapping it in a <DatePicker.Root>',
+        'You probably tried to render a Date Picker (like <Calendar.Weeks>) ' +
+        'element without wrapping it in a <Calendar.Root>',
     );
   }
 

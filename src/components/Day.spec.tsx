@@ -2,8 +2,8 @@ import { render } from '@testing-library/react';
 import { expect, test } from 'bun:test';
 import { DayContext } from '../context/DayContext';
 import { Day } from './Day';
-import { createDatePickerContextState, day } from '../tests/utils';
-import { DatePickerContext } from '../context/DatePickerContext';
+import { createCalendarContextState, day } from '../tests/utils';
+import { CalendarContext } from '../context/CalendarContext';
 import type { Dayjs } from 'dayjs';
 import userEvent from '@testing-library/user-event';
 
@@ -12,8 +12,8 @@ test('Day component', async () => {
   let selectedDate: Dayjs | null = null;
 
   const screen = render(
-    <DatePickerContext.Provider
-      value={createDatePickerContextState({
+    <CalendarContext.Provider
+      value={createCalendarContextState({
         setSelectedDate(date) {
           selectedDate = date;
         },
@@ -47,7 +47,7 @@ test('Day component', async () => {
           }}
         </Day>
       </DayContext.Provider>
-    </DatePickerContext.Provider>,
+    </CalendarContext.Provider>,
   );
 
   expect(selectedDate).toBeNull();

@@ -9,7 +9,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'src', 'index.ts'),
-      name: '@zuruuh/react-date-picker',
+      name: '@zuruuh/react-calendar',
     },
     rollupOptions: {
       external: [...Object.keys(packageJson.peerDependencies)],

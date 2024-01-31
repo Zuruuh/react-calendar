@@ -1,5 +1,5 @@
 import { test, expect } from 'bun:test';
-import { useControlFactory } from './DatePicker';
+import { useControlFactory } from './Calendar';
 import { renderHook } from '@testing-library/react';
 import { useState } from 'react';
 import { day } from './tests/utils';

@@ -1,12 +1,12 @@
 import styles from './Basic.stories.module.scss';
 import { useState, type FC } from 'react';
-import { DatePicker, type CalendarInnerProps, DatePickerControls } from '../';
+import { Calendar, type WeeksInnerProps, CalendarControls } from '../';
 import type { Story } from '@ladle/react';
 import { withStrictMode } from '../ladle/decorators/withStrictMode';
 import clsx from 'clsx';
 import dayjs, { type Dayjs } from 'dayjs';
 
-const MyControls: FC<{ controls: DatePickerControls }> = ({ controls }) => {
+const MyControls: FC<{ controls: CalendarControls }> = ({ controls }) => {
   return (
     <div>
       <button
@@ -31,8 +31,8 @@ const MyCustomCalendar: FC<{ showWeekNumbers: boolean }> = ({
   showWeekNumbers,
 }) => {
   return (
-    <DatePicker.Calendar>
-      {({ weekNumbers }: CalendarInnerProps) => (
+    <Calendar.Weeks>
+      {({ weekNumbers }: WeeksInnerProps) => (
         <div className={styles.week}>
           {showWeekNumbers ? (
             <div className={styles.weekNumberWrapper}>
@@ -41,9 +41,9 @@ const MyCustomCalendar: FC<{ showWeekNumbers: boolean }> = ({
           ) : (
             <></>
           )}
-          <DatePicker.Week>
+          <Calendar.Week>
             <div className={styles.day}>
-              <DatePicker.Day>
+              <Calendar.Day>
                 {({
                   onClick: onDayClick,
                   date: dayDate,
@@ -65,12 +65,12 @@ const MyCustomCalendar: FC<{ showWeekNumbers: boolean }> = ({
                     {dayDate.date()}
                   </button>
                 )}
-              </DatePicker.Day>
+              </Calendar.Day>
             </div>
-          </DatePicker.Week>
+          </Calendar.Week>
         </div>
       )}
-    </DatePicker.Calendar>
+    </Calendar.Weeks>
   );
 };
 
@@ -82,7 +82,7 @@ export const Simple: Story = (): React.ReactNode => {
       <p>
         The current selected date is: {date?.toString() ?? '(not selected yet)'}
       </p>
-      <DatePicker.Root setSelectedDate={setDate} selectedDate={date}>
+      <Calendar.Root setSelectedDate={setDate} selectedDate={date}>
         {({ controls }) => (
           <>
             <MyControls controls={controls} />
@@ -91,7 +91,7 @@ export const Simple: Story = (): React.ReactNode => {
             </div>
           </>
         )}
-      </DatePicker.Root>
+      </Calendar.Root>
     </>
   );
 };
@@ -105,7 +105,7 @@ export const WithWeekNumbers: Story = () => {
         The current selected date is: {date?.toString() ?? '(not selected yet)'}
       </p>
       <p>The week numbers are shown in red on the left</p>
-      <DatePicker.Root setSelectedDate={setDate} selectedDate={date}>
+      <Calendar.Root setSelectedDate={setDate} selectedDate={date}>
         {({ controls }) => (
           <>
             <MyControls controls={controls} />
@@ -114,7 +114,7 @@ export const WithWeekNumbers: Story = () => {
             </div>
           </>
         )}
-      </DatePicker.Root>
+      </Calendar.Root>
     </>
   );
 };
@@ -134,7 +134,7 @@ export const WithMinAndMaxRange: Story = () => {
       <p>
         The maximum date you can pick is {dayjs().add(1, 'week').toString()}
       </p>
-      <DatePicker.Root
+      <Calendar.Root
         setSelectedDate={setDate}
         selectedDate={date}
         minimumSelectableDate={dayjs().subtract(1, 'week')}
@@ -148,7 +148,7 @@ export const WithMinAndMaxRange: Story = () => {
             </div>
           </>
         )}
-      </DatePicker.Root>
+      </Calendar.Root>
     </>
   );
 };
@@ -161,7 +161,7 @@ export const WithNoOverlap: Story = () => {
       <p>
         The current selected date is: {date?.toString() ?? '(not selected yet)'}
       </p>
-      <DatePicker.Root
+      <Calendar.Root
         setSelectedDate={setDate}
         selectedDate={date}
         overlap="no-overlap"
@@ -174,7 +174,7 @@ export const WithNoOverlap: Story = () => {
             </div>
           </>
         )}
-      </DatePicker.Root>
+      </Calendar.Root>
     </>
   );
 };

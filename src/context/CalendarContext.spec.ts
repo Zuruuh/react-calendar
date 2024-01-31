@@ -1,9 +1,9 @@
 import { expect, test } from 'bun:test';
 import { renderHook } from '@testing-library/react';
-import { useDatePickerContext } from './DatePickerContext';
+import { useCalendarContext } from './CalendarContext';
 
-test('useDatePickerContext', () => {
+test('useCalendarContext', () => {
   test('It throws when used outside of context', () => {
-    expect(renderHook(() => useDatePickerContext())).toThrow();
+    expect(renderHook(() => useCalendarContext())).toThrow();
   });
 });

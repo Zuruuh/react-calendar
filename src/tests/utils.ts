@@ -3,7 +3,7 @@ import utc from 'dayjs/plugin/utc';
 import locale from 'dayjs/plugin/localeData';
 import dayjs from 'dayjs';
 import 'dayjs/locale/fr';
-import { DatePickerState } from '../context/DatePickerContext';
+import { CalendarState } from '../context/CalendarContext';
 
 dayjs.extend(week);
 dayjs.extend(utc);
@@ -33,9 +33,9 @@ const defaultControl = {
   disabled: false,
 };
 
-export function createDatePickerContextState(
-  args: Partial<DatePickerState> = {},
-): DatePickerState {
+export function createCalendarContextState(
+  args: Partial<CalendarState> = {},
+): CalendarState {
   return {
     overlap: 'overlap',
     setSelectedDate() {},

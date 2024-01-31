@@ -1,7 +1,9 @@
-# Headless React Date Picker
+# Headless React Calendar
 
-A headless React date picker library for easily integrating date selection into your web applications.
-This library provides a flexible and highly customizable date picker, giving you complete control over the presentation and interaction with the .
+## TODO rewrite readme
+
+A headless React calendar library for easily integrating date visualization and selection into your apps.
+This library provides a flexible and highly customizable calendar, giving you complete control over the presentation and interaction with the .
 
 <!-- ![npm](https://img.shields.io/static/v1?label=&message=@zuruuh/react-date-picker&color=CB3837&logo=npm&logoColor=white) -->
 

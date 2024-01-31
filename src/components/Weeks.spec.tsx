@@ -1,10 +1,10 @@
 import { test, expect } from 'bun:test';
-import { /*Calendar,*/ generateWeeksBasedOnOverlap } from './Calendar';
+import { /*Calendar,*/ generateWeeksBasedOnOverlap } from './Weeks';
 import type { Dayjs } from 'dayjs';
-import type { DatePickerCalendarOverlap } from '../context/DatePickerContext';
+import type { CalendarOverlap } from '../context/CalendarContext';
 import { day } from '../tests/utils';
 
-type Output = [Dayjs, DatePickerCalendarOverlap];
+type Output = [Dayjs, CalendarOverlap];
 
 const expectedOutputs: Array<Output> = [
   [day({ month: 1 }), 'overlap'],

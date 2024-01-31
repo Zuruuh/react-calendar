@@ -1,20 +1,20 @@
 import { useCallback, type ReactNode, type FC } from 'react';
 import {
-  type DatePickerCalendarOverlap,
-  useDatePickerContext,
-} from '../context/DatePickerContext';
+  type CalendarOverlap,
+  useCalendarContext,
+} from '../context/CalendarContext';
 import { WeekContext } from '../context/WeekContext';
 import type { Dayjs } from 'dayjs';
 import type { WeekNumber, WeekNumbers } from '../types/WeekNumber';
 
-export interface CalendarInnerProps {
+export interface WeeksInnerProps {
   weekNumbers: WeekNumber;
   weekIndex: number;
   totalWeeks: number;
 }
 
-export interface CalendarProps {
-  children: ReactNode | ((props: CalendarInnerProps) => ReactNode);
+export interface WeeksProps {
+  children: ReactNode | ((props: WeeksInnerProps) => ReactNode);
 }
 
 function overlapLoopCheck(
@@ -38,7 +38,7 @@ function overlapLoopCheck(
  */
 export function* generateWeeksBasedOnOverlap(
   referenceDate: Dayjs,
-  overlap: DatePickerCalendarOverlap,
+  overlap: CalendarOverlap,
 ): Generator<WeekNumber> {
   const startOfMonth = referenceDate.startOf('month');
 
@@ -66,11 +66,11 @@ export function* generateWeeksBasedOnOverlap(
   }
 }
 
-export const Calendar: FC<CalendarProps> = ({ children }) => {
-  const { temporarySelectedDate, overlap } = useDatePickerContext();
+export const Weeks: FC<WeeksProps> = ({ children }) => {
+  const { temporarySelectedDate, overlap } = useCalendarContext();
 
   const createChildren = useCallback(
-    (props: CalendarInnerProps) =>
+    (props: WeeksInnerProps) =>
       typeof children === 'function' ? children(props) : children,
     [children],
   );

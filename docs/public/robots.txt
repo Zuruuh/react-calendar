@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://date-picker.zuruh.dev/sitemap.xml
+Sitemap: https://calendar.zuruh.dev/sitemap.xml

@@ -2,8 +2,8 @@
 layout: home
 
 hero:
-  name: "Zuruuh's Date Picker"
-  text: "Customizable date picker for React"
+  name: "Zuruuh's Calendar"
+  text: "Customizable calendar & date picker for React"
   tagline: Powered by DayJS
   image:
     src: /favicon.svg
@@ -27,7 +27,7 @@ features:
     details: Usable with your favorite react runtimes, including react-native
     icon: 📱
   - title: Customizable
-    details: Powerful api with total control over your date and component behavior
+    details: Powerful api with total control over your data and component behavior
     icon: ✍️
   - title: Lightweight
     details: Only depends on react and dayjs, weights around ~10kb after gzip

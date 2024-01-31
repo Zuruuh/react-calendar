@@ -1,6 +1,6 @@
 import { useCallback, type FC, type ReactNode } from 'react';
 import { type DayCorners, useDayContext } from '../context/DayContext';
-import { useDatePickerContext } from '../context/DatePickerContext';
+import { useCalendarContext } from '../context/CalendarContext';
 import type { Dayjs } from 'dayjs';
 
 export interface DayInnerProps {
@@ -30,7 +30,7 @@ export const Day: FC<DayProps> = ({ children }) => {
     overlap,
     dayjs,
     altDateFormat,
-  } = useDatePickerContext();
+  } = useCalendarContext();
   const { date, corners } = useDayContext();
 
   const onClick = useCallback(() => {

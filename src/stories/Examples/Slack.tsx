@@ -1,7 +1,7 @@
 import styles from './Slack.module.scss';
 import type { Story } from '@ladle/react';
 import { useCallback, useState } from 'react';
-import { DatePicker, type DatePickerState, DayInnerProps } from '../../';
+import { Calendar, type CalendarState, DayInnerProps } from '../../';
 import clsx from 'clsx';
 import dayjs, { type Dayjs } from 'dayjs';
 
@@ -16,7 +16,7 @@ export const Slack: Story = () => {
 
   return (
     <div id="date-picker" className={styles.datePicker}>
-      <DatePicker.Root
+      <Calendar.Root
         selectedDate={date}
         setSelectedDate={setDate}
         minimumSelectableDate={dayjs()}
@@ -31,7 +31,7 @@ export const Slack: Story = () => {
           minimumSelectableDate,
           maximumSelectableDate,
           dayjs,
-        }: DatePickerState) => (
+        }: CalendarState) => (
           <>
             {showCalendar ? (
               <>
@@ -63,9 +63,9 @@ export const Slack: Story = () => {
                 </div>
 
                 <div className={styles.calendar}>
-                  <DatePicker.Calendar>
-                    <DatePicker.Week>
-                      <DatePicker.Day>
+                  <Calendar.Weeks>
+                    <Calendar.Week>
+                      <Calendar.Day>
                         {({
                           isOverlapPlaceholder: isOffsetPlaceholder,
                           date,
@@ -107,9 +107,9 @@ export const Slack: Story = () => {
                             </button>
                           </>
                         )}
-                      </DatePicker.Day>
-                    </DatePicker.Week>
-                  </DatePicker.Calendar>
+                      </Calendar.Day>
+                    </Calendar.Week>
+                  </Calendar.Weeks>
                 </div>
               </>
             ) : (
@@ -182,7 +182,7 @@ export const Slack: Story = () => {
             )}
           </>
         )}
-      </DatePicker.Root>
+      </Calendar.Root>
     </div>
   );
 };

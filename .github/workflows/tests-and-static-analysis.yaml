@@ -51,5 +51,5 @@ jobs:
         uses: lycheeverse/lychee-action@v1.9.0
         with:
           fail: true
-          args: -v docs/.vitepress/dist docs/**/*.md docs/*.md https://date-picker.zuruh.dev README.md CONTRIBUTING.md
+          args: -v docs/.vitepress/dist docs/**/*.md docs/*.md https://calendar.zuruh.dev README.md CONTRIBUTING.md
           token: ${{ secrets.GH_TOKEN }}
