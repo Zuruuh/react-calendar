@@ -1,12 +1,26 @@
 {
   "$schema": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/package.json",
   "name": "@zuruuh/react-calendar",
+  "description": "A customizable calendar component for react",
+  "keywords": [
+    "react",
+    "component",
+    "headless",
+    "native",
+    "date",
+    "picker",
+    "dayjs"
+  ],
   "private": false,
   "version": "0.2.0",
   "type": "module",
-  "types": "./dist/index.d.ts",
   "license": "MIT",
   "homepage": "https://calendar.zuruh.dev",
+  "author": {
+    "name": "Zuruh",
+    "email": "zuruh.dev@proton.me",
+    "url": "https://github.com/Zuruuh"
+  },
   "files": [
     "dist",
     "package.json",
@@ -14,17 +28,23 @@
     "LICENSE.txt"
   ],
   "main": "dist/react-calendar.umd.cjs",
-  "module": "dist/react-calendar.js",
+  "module": "dist/react-calendar.es.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/react-calendar.js",
+      "import": "./dist/react-calendar.es.js",
       "require": "./dist/react-calendar.umd.cjs",
       "types": "./dist/index.d.ts"
+    },
+    "./plugins/date-picker": {
+      "import": "./dist/plugins/date-picker.es.js",
+      "require": "./dist/plugins/date-picker.umd.js",
+      "types": "./dist/plugins/date-picker.d.ts"
     }
   },
   "scripts": {
     "dev": "ladle dev",
-    "build": "vite build",
+    "build": "bun build.ts",
     "lint": "bun lint:biome && bun lint:typescript",
     "lint:biome": "biome lint .",
     "lint:typescript": "tsc --noEmit true --emitDeclarationOnly false",
@@ -42,14 +62,14 @@
   "devDependencies": {
     "@biomejs/biome": "^1.5.3",
     "@fontsource/poppins": "^5.0.8",
-    "@happy-dom/global-registrator": "^13.3.4",
+    "@happy-dom/global-registrator": "^13.3.8",
     "@ladle/react": "^4.0.2",
     "@testing-library/dom": "^9.3.4",
-    "@testing-library/react": "^14.1.2",
+    "@testing-library/react": "^14.2.0",
     "@testing-library/user-event": "^14.5.2",
+    "@types/bun": "^1.0.4",
     "@types/react": "^18.2.48",
     "@vitejs/plugin-react": "^4.2.1",
-    "bun-types": "^1.0.25",
     "clsx": "^2.1.0",
     "dayjs": "^1.11.10",
     "react": "^18.2.0",
@@ -57,7 +77,6 @@
     "sass": "^1.70.0",
     "typescript": "^5.3.3",
     "vite": "^5.0.12",
-    "vite-plugin-dts": "^3.7.2",
     "vitepress": "^1.0.0-rc.40"
   }
 }

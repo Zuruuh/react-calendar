@@ -1,20 +1,23 @@
 {
-  // Dev tsconfig - type-checking only
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "target": "ES5",
     "module": "ESNext",
     "jsx": "react-jsx",
     "sourceMap": true,
+    "outDir": "dist",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "declaration": true,
+    "declarationDir": "dist",
+    "emitDeclarationOnly": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "stripInternal": true,
     "resolveJsonModule": true,
-    "noEmit": true,
+    "types": ["./src/definition.d.ts"],
 
     /* Linting */
     "strict": true,
@@ -23,5 +26,5 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", ".ladle"]
+  "files": ["src/index.ts", "src/plugins/date-picker.ts"]
 }
