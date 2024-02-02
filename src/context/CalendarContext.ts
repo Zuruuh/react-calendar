@@ -20,8 +20,6 @@ export interface CalendarControls {
 }
 
 export interface CalendarState {
-  selectedDate: Dayjs | null;
-  setSelectedDate(date: Dayjs | null): void;
   temporarySelectedDate: Dayjs;
   setTemporarySelectedDate: Setter<Dayjs>;
   minimumSelectableDate: Dayjs;

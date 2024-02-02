@@ -11,8 +11,6 @@ import { Day } from './components/Day';
 import day, { type Dayjs } from 'dayjs';
 
 export interface CalendarProps {
-  selectedDate: Dayjs | null;
-  setSelectedDate: Setter<Dayjs | null>;
   dayjs?(): Dayjs;
   minimumSelectableDate?: Dayjs;
   maximumSelectableDate?: Dayjs;
@@ -49,8 +47,6 @@ export function useControlFactory(
 
 const Calendar: FC<CalendarProps> = ({
   children,
-  selectedDate,
-  setSelectedDate,
   minimumSelectableDate,
   maximumSelectableDate,
   overlap = 'overlap',
@@ -85,8 +81,6 @@ const Calendar: FC<CalendarProps> = ({
     .hour(23);
 
   const props: CalendarState = {
-    selectedDate,
-    setSelectedDate,
     temporarySelectedDate,
     setTemporarySelectedDate: setTemporarySelectedDateDecorator,
     minimumSelectableDate,
