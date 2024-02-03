@@ -45,22 +45,22 @@ const MyCustomCalendar: FC<{ showWeekNumbers: boolean }> = ({
             <div className={styles.day}>
               <Calendar.Day>
                 {({
-                  onClick: onDayClick,
+                  // onClick: onDayClick,
                   date: dayDate,
                   belongsToSelectedMonth,
-                  isSelected,
-                  isOutOfRange,
+                  // isSelected,
+                  // isOutOfRange,
                   isToday,
                 }) => (
                   <button
                     type="button"
                     className={clsx({
-                      [styles.selectionned]: isSelected,
+                      // [styles.selectionned]: isSelected,
                       [styles.today]: isToday,
                       [styles.month]: belongsToSelectedMonth,
                     })}
-                    disabled={isOutOfRange}
-                    onClick={onDayClick}
+                    // disabled={isOutOfRange}
+                    // onClick={onDayClick}
                   >
                     {dayDate.date()}
                   </button>
@@ -82,10 +82,10 @@ export const Simple: Story = (): React.ReactNode => {
       <p>
         The current selected date is: {date?.toString() ?? '(not selected yet)'}
       </p>
-      <Calendar.Root setSelectedDate={setDate} selectedDate={date}>
-        {({ controls }) => (
+      <Calendar.Root /*setSelectedDate={setDate} selectedDate={date}*/>
+        {(/*{ controls }*/) => (
           <>
-            <MyControls controls={controls} />
+            {/*<MyControls controls={controls} />*/}
             <div className={styles.calendar}>
               <MyCustomCalendar showWeekNumbers={false} />
             </div>
@@ -105,10 +105,10 @@ export const WithWeekNumbers: Story = () => {
         The current selected date is: {date?.toString() ?? '(not selected yet)'}
       </p>
       <p>The week numbers are shown in red on the left</p>
-      <Calendar.Root setSelectedDate={setDate} selectedDate={date}>
-        {({ controls }) => (
+      <Calendar.Root /*setSelectedDate={setDate} selectedDate={date}*/>
+        {(/*{ controls }*/) => (
           <>
-            <MyControls controls={controls} />
+            {/*<MyControls controls={controls} />*/}
             <div className={styles.calendar}>
               <MyCustomCalendar showWeekNumbers={true} />
             </div>
@@ -135,14 +135,14 @@ export const WithMinAndMaxRange: Story = () => {
         The maximum date you can pick is {dayjs().add(1, 'week').toString()}
       </p>
       <Calendar.Root
-        setSelectedDate={setDate}
-        selectedDate={date}
-        minimumSelectableDate={dayjs().subtract(1, 'week')}
-        maximumSelectableDate={dayjs().add(1, 'week')}
+        // setSelectedDate={setDate}
+        // selectedDate={date}
+        // minimumSelectableDate={dayjs().subtract(1, 'week')}
+        // maximumSelectableDate={dayjs().add(1, 'week')}
       >
-        {({ controls }) => (
+        {(/*{ controls }*/) => (
           <>
-            <MyControls controls={controls} />
+            {/*<MyControls controls={controls} />*/}
             <div className={styles.calendar}>
               <MyCustomCalendar showWeekNumbers={false} />
             </div>
@@ -162,13 +162,13 @@ export const WithNoOverlap: Story = () => {
         The current selected date is: {date?.toString() ?? '(not selected yet)'}
       </p>
       <Calendar.Root
-        setSelectedDate={setDate}
-        selectedDate={date}
-        overlap="no-overlap"
+        // setSelectedDate={setDate}
+        // selectedDate={date}
+        // overlap="no-overlap"
       >
-        {({ controls }) => (
+        {(/*{ controls }*/) => (
           <>
-            <MyControls controls={controls} />
+            {/*<MyControls controls={controls} />*/}
             <div className={styles.calendar}>
               <MyCustomCalendar showWeekNumbers={true} />
             </div>

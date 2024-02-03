@@ -1,3 +1,3 @@
-import { Slack } from './Examples/Slack';
+// import { Slack } from './Examples/Slack';
 
-export const slack = Slack;
+// export const slack = Slack;
