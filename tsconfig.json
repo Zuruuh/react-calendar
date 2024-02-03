@@ -15,6 +15,9 @@
     "stripInternal": true,
     "resolveJsonModule": true,
     "noEmit": true,
+    "paths": {
+      "@zuruuh/react-calendar": ["./src/"]
+    },
 
     /* Linting */
     "strict": true,

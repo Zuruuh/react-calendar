@@ -80,20 +80,9 @@ const Calendar: FC<CalendarProps> = ({
   //   setTemporarySelectedDateDecorator,
   // );
 
-  // minimumSelectableDate = (minimumSelectableDate ?? dayFactory().year(0))
-  //   .second(0)
-  //   .minute(0)
-  //   .hour(0);
-  // maximumSelectableDate = (maximumSelectableDate ?? dayFactory().year(99999))
-  //   .second(59)
-  //   .minute(59)
-  //   .hour(23);
-
   const props: CalendarState = {
     // temporarySelectedDate,
     // setTemporarySelectedDate: setTemporarySelectedDateDecorator,
-    // minimumSelectableDate,
-    // maximumSelectableDate,
     // controls: {
     //   nextMonth: controlFactory(true, 'month', maximumSelectableDate),
     //   nextYear: controlFactory(true, 'year', maximumSelectableDate),

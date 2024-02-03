@@ -18,6 +18,9 @@
     "stripInternal": true,
     "resolveJsonModule": true,
     "types": ["./src/definition.d.ts"],
+    "paths": {
+      "@zuruuh/react-calendar": ["./src/"]
+    },
 
     /* Linting */
     "strict": true,

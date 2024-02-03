@@ -6,7 +6,10 @@
     "target": "ESNext",
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
-    "noEmit": true
+    "noEmit": true,
+    "paths": {
+      "@zuruuh/react-calendar": ["./src/"]
+    }
   },
   "include": [
     "build.ts",

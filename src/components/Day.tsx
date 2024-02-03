@@ -81,6 +81,9 @@ export const Day: FC<DayProps> = ({ children }) => {
 
   return (
     <>
+      {/* typescript doesn't know we provide all the*/}
+      {/* required values that are missing in the `additionnalProps` object */}
+      {/* @ts-expect-error */}
       {children({
         // onClick,
         isToday,

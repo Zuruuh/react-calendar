@@ -1,7 +1,6 @@
 import { resolve } from 'node:path';
 import { build } from 'vite';
 import packageJson from './package.json' assert { type: 'json' };
-import react from '@vitejs/plugin-react';
 import { $ } from 'bun';
 import { rm, readdir } from 'node:fs/promises';
 
@@ -22,7 +21,12 @@ await rm(`${import.meta.dir}/dist`, { force: true, recursive: true });
 
 for (const entrypoint of ENTRYPOINTS) {
   await build({
-    plugins: [react()],
+    esbuild: {
+      minifyWhitespace: true,
+      minifySyntax: true,
+      minifyIdentifiers: true,
+      jsx: 'transform',
+    },
     build: {
       emptyOutDir: false,
       lib: {
@@ -32,14 +36,13 @@ for (const entrypoint of ENTRYPOINTS) {
       rollupOptions: {
         external: [...Object.keys(packageJson.peerDependencies)],
         output: {
+          compact: true,
           globals: {
             react: 'React',
-            dayjs: 'day',
           },
           entryFileNames: () => entrypoint.name,
         },
       },
-      minify: true,
     },
   });
 }
