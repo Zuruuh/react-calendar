@@ -35,7 +35,7 @@
     "build": "bun build.ts",
     "lint": "bun lint:biome && bun lint:typescript",
     "lint:biome": "biome lint .",
-    "lint:typescript": "tsc && tsc --project tsconfig.bun.jsonc",
+    "lint:typescript": "tsc --project tsconfig.json && tsc --project tsconfig.bun.jsonc",
     "format": "biome format .",
     "preview": "ladle preview",
     "preview:build": "ladle build",
@@ -53,6 +53,26 @@
       "import": "./dist/plugins/date-picker.es.js",
       "require": "./dist/plugins/date-picker.umd.js",
       "types": "./dist/plugins/date-picker.d.ts"
+    },
+    "./plugins/controls": {
+      "import": "./dist/plugins/controls.es.js",
+      "require": "./dist/plugins/controls.umd.js",
+      "types": "./dist/plugins/controls.d.ts"
+    },
+    "./plugins/keyboard-navigation": {
+      "import": "./dist/plugins/keyboard-navigation.es.js",
+      "require": "./dist/plugins/keyboard-navigation.umd.js",
+      "types": "./dist/plugins/keyboard-navigation.d.ts"
+    },
+    "./plugins/hightlight-range": {
+      "import": "./dist/plugins/hightlight-range.es.js",
+      "require": "./dist/plugins/hightlight-range.umd.js",
+      "types": "./dist/plugins/hightlight-range.d.ts"
+    },
+    "./plugins/week-overlap": {
+      "import": "./dist/plugins/week-overlap.es.js",
+      "require": "./dist/plugins/week-overlap.umd.js",
+      "types": "./dist/plugins/week-overlap.d.ts"
     }
   },
   "peerDependencies": {

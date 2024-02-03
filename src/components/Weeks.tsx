@@ -70,7 +70,7 @@ export function* generateWeeksBasedOnOverlap(
 }
 
 export const Weeks: FC<WeeksProps> = ({ children }) => {
-  const { date: temporarySelectedDate, overlap } = useCalendarContext();
+  const { viewedDate: temporarySelectedDate, overlap } = useCalendarContext();
 
   const createChildren = useCallback(
     (props: WeeksInnerProps) =>

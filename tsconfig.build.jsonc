@@ -22,16 +22,10 @@
     /* Linting */
     "strict": true,
     "noImplicitAny": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "files": [
-    "src/index.ts",
-    "src/plugins/date-picker.ts",
-    "src/plugins/controls.ts",
-    "src/plugins/keyboard-navigation.ts",
-    "src/plugins/week-overlap.ts",
-    "src/plugins/range.ts"
-  ]
+  "include": ["src/plugins"],
+  "files": ["src/index.ts"]
 }

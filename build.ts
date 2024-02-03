@@ -3,23 +3,19 @@ import { build } from 'vite';
 import packageJson from './package.json' assert { type: 'json' };
 import react from '@vitejs/plugin-react';
 import { $ } from 'bun';
-import { rm } from 'node:fs/promises';
+import { rm, readdir } from 'node:fs/promises';
 
 const ENTRYPOINTS = [
   {
     name: 'react-calendar.[format].js',
     path: ['index.ts'],
   },
-  ...[
-    'date-picker',
-    'controls',
-    'keyboard-navigation',
-    'week-overlap',
-    'range',
-  ].map((plugin) => ({
-    name: `plugins/${plugin}.[format].js`,
-    path: ['plugins', `${plugin}.ts`],
-  })),
+  ...(await readdir('src/plugins'))
+    .map((file) => file.replace('.ts', ''))
+    .map((plugin) => ({
+      name: `plugins/${plugin}.[format].js`,
+      path: ['plugins', `${plugin}.ts`],
+    })),
 ] satisfies Array<{ name: string; path: Array<string> }>;
 
 await rm(`${import.meta.dir}/dist`, { force: true, recursive: true });

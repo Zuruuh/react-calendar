@@ -17,7 +17,7 @@
         "noRestrictedGlobals": {
           "level": "error",
           "options": {
-            "deniedGlobals": ["document"]
+            "deniedGlobals": ["document", "window"]
           }
         }
       },

@@ -20,18 +20,24 @@ export interface DayProps {
 }
 
 export const Day: FC<DayProps> = ({ children }) => {
+  const calendarState = useCalendarContext();
   const {
     // selectedDate,
     // setSelectedDate,
-    date: temporarySelectedDate,
+    viewedDate: temporarySelectedDate,
     // setTemporarySelectedDate,
     // minimumSelectableDate,
     // maximumSelectableDate,
-    overlap,
     dayjs,
+    plugins,
     // altDateFormat,
-  } = useCalendarContext();
-  const { date /*corners*/ } = useDayContext();
+  } = calendarState;
+  const dayState = useDayContext();
+  const { date } = dayState;
+
+  const additionnalProps = plugins.flatMap((plugin) =>
+    plugin.dayHook !== undefined ? plugin.dayHook(calendarState, dayState) : {},
+  );
 
   // const onClick = useCallback(() => {
   //   if (
@@ -63,9 +69,6 @@ export const Day: FC<DayProps> = ({ children }) => {
 
   const belongsToSelectedMonth = date.month() === temporarySelectedDate.month();
 
-  // const isOutOfRange =
-  // date.isBefore(minimumSelectableDate) || date.isAfter(maximumSelectableDate);
-
   // const alt = date.format(altDateFormat);
 
   // const isOverlapPlaceholder =
@@ -84,6 +87,7 @@ export const Day: FC<DayProps> = ({ children }) => {
         date,
         // alt,
         // corners,
+        ...additionnalProps,
       })}
     </>
   );

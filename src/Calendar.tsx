@@ -14,6 +14,7 @@ import { CalendarPlugin } from './plugin';
 export interface CalendarProps {
   // selectedDate: Dayjs | null;
   // setSelectedDate: Setter<Dayjs | null>;
+  viewedDate?: Dayjs;
   dayjs?(): Dayjs;
   plugins?: Array<CalendarPlugin>;
   // minimumSelectableDate?: Dayjs;
@@ -26,28 +27,28 @@ export interface CalendarProps {
 /**
  * @internal
  */
-export function useControlFactory(
-  date: Dayjs,
-  setDate: (date: Dayjs) => unknown,
-) {
-  return useCallback(
-    (positive: boolean, unit: 'month' | 'year', referenceDate: Dayjs) => {
-      const modifiedDate = (
-        positive ? date.add(1, unit) : date.subtract(1, unit)
-      ).date(1);
-
-      return {
-        disabled: positive
-          ? modifiedDate.isAfter(referenceDate.endOf(unit))
-          : modifiedDate.isBefore(referenceDate.startOf(unit)),
-        execute(): void {
-          setDate(modifiedDate);
-        },
-      };
-    },
-    [date, setDate],
-  );
-}
+// export function useControlFactory(
+// date: Dayjs,
+// setDate: (date: Dayjs) => unknown,
+// ) {
+//   return useCallback(
+//     (positive: boolean, unit: 'month' | 'year', referenceDate: Dayjs) => {
+//       const modifiedDate = (
+//         positive ? date.add(1, unit) : date.subtract(1, unit)
+//       ).date(1);
+//
+//       return {
+//         disabled: positive
+//           ? modifiedDate.isAfter(referenceDate.endOf(unit))
+//           : modifiedDate.isBefore(referenceDate.startOf(unit)),
+//         execute(): void {
+//           setDate(modifiedDate);
+//         },
+//       };
+//     },
+//     [date, setDate],
+//   );
+// }
 
 const Calendar: FC<CalendarProps> = ({
   children,
@@ -55,6 +56,8 @@ const Calendar: FC<CalendarProps> = ({
   // maximumSelectableDate,
   // overlap = 'overlap',
   // altDateFormat = 'dddd D MMMM YYYY',
+  plugins = [],
+  viewedDate,
   dayjs = () => day(),
 }) => {
   const dayFactory = useCallback(
@@ -99,6 +102,8 @@ const Calendar: FC<CalendarProps> = ({
     // },
     // overlap,
     // altDateFormat,
+    plugins,
+    viewedDate: viewedDate ?? dayFactory(),
     dayjs: dayFactory,
   };
 

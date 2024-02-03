@@ -1,6 +1,7 @@
 import { createContext, useContext } from 'react';
 import type { Setter } from '../types/Setter';
 import type { Dayjs } from 'dayjs';
+import { CalendarPlugin } from '../plugin';
 
 export type CalendarOverlap =
   | 'overlap'
@@ -28,6 +29,8 @@ export interface CalendarState {
   // maximumSelectableDate: Dayjs;
   // controls: CalendarControls;
   // overlap: CalendarOverlap;
+  plugins: Array<CalendarPlugin>;
+  viewedDate: Dayjs;
   dayjs(): Dayjs;
   // altDateFormat: string;
 }
@@ -43,7 +46,6 @@ export const CalendarContext = createContext<CalendarState | undefined>(
  * @internal
  */
 export function useCalendarContext(): CalendarState & {
-  date: Dayjs;
   overlap: CalendarOverlap;
 } {
   const state = useContext(CalendarContext);
@@ -55,5 +57,5 @@ export function useCalendarContext(): CalendarState & {
     );
   }
 
-  return { ...state, overlap: 'overlap', date: state.dayjs() };
+  return { ...state, overlap: 'overlap' };
 }
