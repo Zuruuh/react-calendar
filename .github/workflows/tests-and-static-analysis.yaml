@@ -8,7 +8,7 @@ on:
 
 jobs:
   setup:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
       fail-fast: false
 
@@ -32,7 +32,10 @@ jobs:
       - name: ➕ Install dependencies
         run: bun install --frozen-lockfile
 
-      - name: 📦 Build docs
+      - name: 📦 Build package
+        run: bun run build
+
+      - name: 📦 Build documentation
         run: bun run docs:build
 
       - name: 🚨 Check formatting
