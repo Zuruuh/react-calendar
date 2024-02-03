@@ -10,13 +10,19 @@ const ENTRYPOINTS = [
     name: 'react-calendar.[format].js',
     path: ['index.ts'],
   },
-  {
-    name: 'plugins/date-picker.[format].js',
-    path: ['plugins', 'date-picker.ts'],
-  },
+  ...[
+    'date-picker',
+    'controls',
+    'keyboard-navigation',
+    'week-overlap',
+    'range',
+  ].map((plugin) => ({
+    name: `plugins/${plugin}.[format].js`,
+    path: ['plugins', `${plugin}.ts`],
+  })),
 ] satisfies Array<{ name: string; path: Array<string> }>;
 
-await rm(`${import.meta.dir}/dist`, { force: true, recursive: true});
+await rm(`${import.meta.dir}/dist`, { force: true, recursive: true });
 
 for (const entrypoint of ENTRYPOINTS) {
   await build({

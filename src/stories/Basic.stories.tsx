@@ -135,10 +135,10 @@ export const WithMinAndMaxRange: Story = () => {
         The maximum date you can pick is {dayjs().add(1, 'week').toString()}
       </p>
       <Calendar.Root
-        // setSelectedDate={setDate}
-        // selectedDate={date}
-        // minimumSelectableDate={dayjs().subtract(1, 'week')}
-        // maximumSelectableDate={dayjs().add(1, 'week')}
+      // setSelectedDate={setDate}
+      // selectedDate={date}
+      // minimumSelectableDate={dayjs().subtract(1, 'week')}
+      // maximumSelectableDate={dayjs().add(1, 'week')}
       >
         {(/*{ controls }*/) => (
           <>
@@ -162,9 +162,9 @@ export const WithNoOverlap: Story = () => {
         The current selected date is: {date?.toString() ?? '(not selected yet)'}
       </p>
       <Calendar.Root
-        // setSelectedDate={setDate}
-        // selectedDate={date}
-        // overlap="no-overlap"
+      // setSelectedDate={setDate}
+      // selectedDate={date}
+      // overlap="no-overlap"
       >
         {(/*{ controls }*/) => (
           <>
