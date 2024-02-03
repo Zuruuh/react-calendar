@@ -1,5 +1,5 @@
 * {
-  font-family: 'Poppins';
+  font-family: "Poppins";
 }
 
 .calendar {
@@ -31,40 +31,37 @@
 
 .day {
   display: flex;
+  width: 30px;
+  height: 30px;
+  color: #c5c5c5;
+  border: 0;
+  background: transparent;
+  border-radius: 5px;
 
-  button {
-    width: 30px;
-    height: 30px;
-    color: #c5c5c5;
-    border: 0;
-    background: transparent;
-    border-radius: 5px;
+  &:disabled {
+    color: #b5b5b5;
+    cursor: not-allowed;
+  }
 
-    &:disabled {
-      color: #b5b5b5;
-      cursor: not-allowed;
+  &:not(:disabled) {
+    &:hover {
+      background-color: #eee;
     }
 
-    &:not(:disabled) {
+    &.month {
+      color: black;
+    }
+
+    &.today {
+      font-weight: bold;
+    }
+
+    &.selectionned {
+      color: white;
+      background-color: #0f6fde;
+
       &:hover {
-        background-color: #eee;
-      }
-
-      &.month {
-        color: black;
-      }
-
-      &.today {
-        font-weight: bold;
-      }
-
-      &.selectionned {
-        color: white;
-        background-color: #0f6fde;
-
-        &:hover {
-          background-color: #1d5d90;
-        }
+        background-color: #1d5d90;
       }
     }
   }

@@ -35,9 +35,13 @@ export const Day: FC<DayProps> = ({ children }) => {
   const dayState = useDayContext();
   const { date } = dayState;
 
-  const additionnalProps = plugins.flatMap((plugin) =>
-    plugin.dayHook !== undefined ? plugin.dayHook(calendarState, dayState) : {},
-  );
+  const additionnalProps = plugins
+    .map((plugin) =>
+      plugin.dayHook !== undefined
+        ? plugin.dayHook(calendarState, dayState)
+        : {},
+    )
+    .reduce((acc, curr) => ({ ...acc, ...curr }), {});
 
   // const onClick = useCallback(() => {
   //   if (

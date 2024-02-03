@@ -18,9 +18,19 @@ export default function ({
   return {
     id: 'highlight-range',
     dayHook(_, { date }) {
+      // console.log(
+      //   date.toString(),
+      //   minInclusiveDate?.toString(),
+      //   maxInclusiveDate?.toString(),
+      // );
+
+      const isOutOfRange =
+        (minInclusiveDate !== undefined && date.isBefore(minInclusiveDate)) ||
+        (maxInclusiveDate !== undefined && date.isAfter(maxInclusiveDate));
+      // console.log(isOutOfRange);
+
       return {
-        isOutOfRange:
-          date.isBefore(minInclusiveDate) || date.isAfter(maxInclusiveDate),
+        isOutOfRange,
       };
     },
   };

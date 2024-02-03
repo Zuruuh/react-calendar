@@ -1,10 +1,12 @@
 import styles from './Basic.stories.module.scss';
-import { useState, type FC } from 'react';
+import { useState, type FC, useMemo } from 'react';
 import { Calendar, type WeeksInnerProps, CalendarControls } from '../';
 import type { Story } from '@ladle/react';
 import { withStrictMode } from '../ladle/decorators/withStrictMode';
 import clsx from 'clsx';
 import dayjs, { type Dayjs } from 'dayjs';
+
+import highlightRange from '../plugins/highlight-range';
 
 const MyControls: FC<{ controls: CalendarControls }> = ({ controls }) => {
   return (
@@ -42,31 +44,30 @@ const MyCustomCalendar: FC<{ showWeekNumbers: boolean }> = ({
             <></>
           )}
           <Calendar.Week>
-            <div className={styles.day}>
-              <Calendar.Day>
-                {({
-                  // onClick: onDayClick,
-                  date: dayDate,
-                  belongsToSelectedMonth,
-                  // isSelected,
-                  // isOutOfRange,
-                  isToday,
-                }) => (
-                  <button
-                    type="button"
-                    className={clsx({
-                      // [styles.selectionned]: isSelected,
-                      [styles.today]: isToday,
-                      [styles.month]: belongsToSelectedMonth,
-                    })}
-                    // disabled={isOutOfRange}
-                    // onClick={onDayClick}
-                  >
-                    {dayDate.date()}
-                  </button>
-                )}
-              </Calendar.Day>
-            </div>
+            <Calendar.Day>
+              {({
+                // onClick: onDayClick,
+                date: dayDate,
+                belongsToSelectedMonth,
+                // isSelected,
+                // @ts-expect-error
+                isOutOfRange,
+                isToday,
+              }) => (
+                <button
+                  type="button"
+                  className={clsx(styles.day, {
+                    // [styles.selectionned]: isSelected,
+                    [styles.today]: isToday,
+                    [styles.month]: belongsToSelectedMonth,
+                  })}
+                  disabled={isOutOfRange}
+                  // onClick={onDayClick}
+                >
+                  {dayDate.date()}
+                </button>
+              )}
+            </Calendar.Day>
           </Calendar.Week>
         </div>
       )}
@@ -76,13 +77,24 @@ const MyCustomCalendar: FC<{ showWeekNumbers: boolean }> = ({
 
 export const Simple: Story = (): React.ReactNode => {
   const [date, setDate] = useState<Dayjs | null>(null);
+  const plugins = useMemo(
+    () => [
+      highlightRange({
+        minInclusiveDate: dayjs().subtract(7, 'days'),
+        maxInclusiveDate: dayjs().add(7, 'days'),
+      }),
+    ],
+    [],
+  );
 
   return (
     <>
       <p>
         The current selected date is: {date?.toString() ?? '(not selected yet)'}
       </p>
-      <Calendar.Root /*setSelectedDate={setDate} selectedDate={date}*/>
+      <Calendar.Root
+        plugins={plugins} /*setSelectedDate={setDate} selectedDate={date}*/
+      >
         {(/*{ controls }*/) => (
           <>
             {/*<MyControls controls={controls} />*/}
