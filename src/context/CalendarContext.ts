@@ -20,14 +20,16 @@ export interface CalendarControls {
 }
 
 export interface CalendarState {
-  temporarySelectedDate: Dayjs;
-  setTemporarySelectedDate: Setter<Dayjs>;
-  minimumSelectableDate: Dayjs;
-  maximumSelectableDate: Dayjs;
-  controls: CalendarControls;
-  overlap: CalendarOverlap;
+  // selectedDate: Dayjs | null;
+  // setSelectedDate: Setter<Dayjs | null>;
+  // temporarySelectedDate: Dayjs;
+  // setTemporarySelectedDate: Setter<Dayjs>;
+  // minimumSelectableDate: Dayjs;
+  // maximumSelectableDate: Dayjs;
+  // controls: CalendarControls;
+  // overlap: CalendarOverlap;
   dayjs(): Dayjs;
-  altDateFormat: string;
+  // altDateFormat: string;
 }
 
 /**
@@ -40,7 +42,10 @@ export const CalendarContext = createContext<CalendarState | undefined>(
 /**
  * @internal
  */
-export function useCalendarContext(): CalendarState {
+export function useCalendarContext(): CalendarState & {
+  date: Dayjs;
+  overlap: CalendarOverlap;
+} {
   const state = useContext(CalendarContext);
   if (state === undefined) {
     throw new Error(
@@ -50,5 +55,5 @@ export function useCalendarContext(): CalendarState {
     );
   }
 
-  return state;
+  return { ...state, overlap: 'overlap', date: state.dayjs() };
 }

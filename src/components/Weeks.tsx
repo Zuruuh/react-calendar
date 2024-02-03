@@ -17,6 +17,9 @@ export interface WeeksProps {
   children: ReactNode | ((props: WeeksInnerProps) => ReactNode);
 }
 
+/**
+ * @internal
+ */
 function overlapLoopCheck(
   i: number,
   startOfMonth: Dayjs,
@@ -67,7 +70,7 @@ export function* generateWeeksBasedOnOverlap(
 }
 
 export const Weeks: FC<WeeksProps> = ({ children }) => {
-  const { temporarySelectedDate, overlap } = useCalendarContext();
+  const { date: temporarySelectedDate, overlap } = useCalendarContext();
 
   const createChildren = useCallback(
     (props: WeeksInnerProps) =>

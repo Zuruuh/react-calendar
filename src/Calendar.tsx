@@ -9,13 +9,17 @@ import { Weeks } from './components/Weeks';
 import { Week } from './components/Week';
 import { Day } from './components/Day';
 import day, { type Dayjs } from 'dayjs';
+import { CalendarPlugin } from './plugin';
 
 export interface CalendarProps {
+  // selectedDate: Dayjs | null;
+  // setSelectedDate: Setter<Dayjs | null>;
   dayjs?(): Dayjs;
-  minimumSelectableDate?: Dayjs;
-  maximumSelectableDate?: Dayjs;
-  overlap?: CalendarOverlap;
-  altDateFormat?: string;
+  plugins?: Array<CalendarPlugin>;
+  // minimumSelectableDate?: Dayjs;
+  // maximumSelectableDate?: Dayjs;
+  // overlap?: CalendarOverlap;
+  // altDateFormat?: string;
   children: ReactNode | ((props: CalendarState) => ReactNode);
 }
 
@@ -47,52 +51,54 @@ export function useControlFactory(
 
 const Calendar: FC<CalendarProps> = ({
   children,
-  minimumSelectableDate,
-  maximumSelectableDate,
-  overlap = 'overlap',
-  altDateFormat = 'dddd D MMMM YYYY',
+  // minimumSelectableDate,
+  // maximumSelectableDate,
+  // overlap = 'overlap',
+  // altDateFormat = 'dddd D MMMM YYYY',
   dayjs = () => day(),
 }) => {
   const dayFactory = useCallback(
     () => dayjs().utc(true).second(0).minute(0).hour(12),
     [dayjs],
   );
-  const [temporarySelectedDate, setTemporarySelectedDate] = useState(
-    dayFactory().day(dayjs().localeData().firstDayOfWeek()),
-  );
-  const setTemporarySelectedDateDecorator: Setter<Dayjs> = (date) => {
-    const unwrappedDate =
-      typeof date === 'function' ? date(temporarySelectedDate) : date;
-    return setTemporarySelectedDate(unwrappedDate.date(1));
-  };
 
-  const controlFactory = useControlFactory(
-    temporarySelectedDate,
-    setTemporarySelectedDateDecorator,
-  );
+  // const [temporarySelectedDate, setTemporarySelectedDate] = useState(
+  //   dayFactory().day(dayjs().localeData().firstDayOfWeek()),
+  // );
 
-  minimumSelectableDate = (minimumSelectableDate ?? dayFactory().year(0))
-    .second(0)
-    .minute(0)
-    .hour(0);
-  maximumSelectableDate = (maximumSelectableDate ?? dayFactory().year(99999))
-    .second(59)
-    .minute(59)
-    .hour(23);
+  // const setTemporarySelectedDateDecorator: Setter<Dayjs> = (date) => {
+  //   const unwrappedDate =
+  //     typeof date === 'function' ? date(temporarySelectedDate) : date;
+  //   return setTemporarySelectedDate(unwrappedDate.date(1));
+  // };
+
+  // const controlFactory = useControlFactory(
+  //   temporarySelectedDate,
+  //   setTemporarySelectedDateDecorator,
+  // );
+
+  // minimumSelectableDate = (minimumSelectableDate ?? dayFactory().year(0))
+  //   .second(0)
+  //   .minute(0)
+  //   .hour(0);
+  // maximumSelectableDate = (maximumSelectableDate ?? dayFactory().year(99999))
+  //   .second(59)
+  //   .minute(59)
+  //   .hour(23);
 
   const props: CalendarState = {
-    temporarySelectedDate,
-    setTemporarySelectedDate: setTemporarySelectedDateDecorator,
-    minimumSelectableDate,
-    maximumSelectableDate,
-    controls: {
-      nextMonth: controlFactory(true, 'month', maximumSelectableDate),
-      nextYear: controlFactory(true, 'year', maximumSelectableDate),
-      prevMonth: controlFactory(false, 'month', minimumSelectableDate),
-      prevYear: controlFactory(false, 'year', minimumSelectableDate),
-    },
-    overlap,
-    altDateFormat,
+    // temporarySelectedDate,
+    // setTemporarySelectedDate: setTemporarySelectedDateDecorator,
+    // minimumSelectableDate,
+    // maximumSelectableDate,
+    // controls: {
+    //   nextMonth: controlFactory(true, 'month', maximumSelectableDate),
+    //   nextYear: controlFactory(true, 'year', maximumSelectableDate),
+    //   prevMonth: controlFactory(false, 'month', minimumSelectableDate),
+    //   prevYear: controlFactory(false, 'year', minimumSelectableDate),
+    // },
+    // overlap,
+    // altDateFormat,
     dayjs: dayFactory,
   };
 

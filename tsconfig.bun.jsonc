@@ -6,5 +6,10 @@
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true
   },
-  "include": [".ladle/vite.config.ts", "package.json", "docs/.vitepress/config.ts"]
+  "include": [
+    "build.ts",
+    ".ladle/vite.config.ts",
+    "package.json",
+    "docs/.vitepress/config.ts"
+  ]
 }

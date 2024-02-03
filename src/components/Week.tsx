@@ -15,6 +15,9 @@ export interface WeekProps {
   children: ReactNode;
 }
 
+/**
+ * @internal
+ */
 function generateCorners({
   date,
   startOfMonth,
@@ -85,7 +88,7 @@ function generateCorners({
 
 export const Week: FC<WeekProps> = ({ children }) => {
   const { weekNumbers, weekIndex, totalWeeks } = useWeekContext();
-  const { temporarySelectedDate, overlap, dayjs } = useCalendarContext();
+  const { date: temporarySelectedDate, overlap, dayjs } = useCalendarContext();
 
   const initialOffset =
     overlap === 'no-overlap'
@@ -120,12 +123,12 @@ export const Week: FC<WeekProps> = ({ children }) => {
     partialDays.push({
       value: {
         date: day,
-        corners: {
-          topLeft: false,
-          topRight: false,
-          bottomRight: false,
-          bottomLeft: false,
-        },
+        // corners: {
+        //   topLeft: false,
+        //   topRight: false,
+        //   bottomRight: false,
+        //   bottomLeft: false,
+        // },
       },
       key: `${overlap}-${day.format('D-MM-YYYY')}`,
     });

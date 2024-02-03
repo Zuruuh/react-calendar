@@ -10,7 +10,7 @@ export interface DayCorners {
 
 export interface DayContextState {
   date: Dayjs;
-  corners: DayCorners;
+  // corners: DayCorners;
 }
 
 /**

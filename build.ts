@@ -3,6 +3,7 @@ import { build } from 'vite';
 import packageJson from './package.json' assert { type: 'json' };
 import react from '@vitejs/plugin-react';
 import { $ } from 'bun';
+import { rm } from 'node:fs/promises';
 
 const ENTRYPOINTS = [
   {
@@ -15,7 +16,7 @@ const ENTRYPOINTS = [
   },
 ] satisfies Array<{ name: string; path: Array<string> }>;
 
-await $`rm -rf ${import.meta.dir}/dist`;
+await rm(`${import.meta.dir}/dist`, { force: true, recursive: true});
 
 for (const entrypoint of ENTRYPOINTS) {
   await build({
@@ -41,4 +42,4 @@ for (const entrypoint of ENTRYPOINTS) {
   });
 }
 
-await $`tsc --project tsconfig.build.json`
+await $`tsc --project tsconfig.build.jsonc`;
