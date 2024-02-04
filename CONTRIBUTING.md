@@ -1,6 +1,6 @@
 # Software requirements
 
-- [Bun](https://bun.sh) ^1.0.25
+- [Bun](https://bun.sh) ^1.0.26
 - [Typos CLI](https://github.com/crate-ci/typos)
 - [Lychee](https://github.com/lycheeverse/lychee)
 

@@ -9,7 +9,7 @@ export type {
   CalendarControl,
   CalendarOverlap,
 } from './context/CalendarContext';
-export type { CalendarPlugin } from './plugin';
+export type { CalendarPlugin, CalendarPluginDefinition } from './plugin';
 export type { Setter } from './types/Setter';
 export type { WeekNumber, WeekNumbers } from './types/WeekNumber';
 

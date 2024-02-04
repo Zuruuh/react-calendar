@@ -19,7 +19,7 @@ jobs:
       - name: ✨ Install bun
         uses: oven-sh/setup-bun@v1.1.1
         with:
-          bun-version: 1.0.25
+          bun-version: 1.0.26
 
       - uses: actions/cache@v4
         name: 📦 Setup deps cache

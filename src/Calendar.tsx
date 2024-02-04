@@ -17,53 +17,27 @@ export interface CalendarProps {
   viewedDate?: Dayjs;
   dayjs?(): Dayjs;
   plugins?: Array<CalendarPlugin>;
-  // minimumSelectableDate?: Dayjs;
-  // maximumSelectableDate?: Dayjs;
   // overlap?: CalendarOverlap;
   // altDateFormat?: string;
   children: ReactNode | ((props: CalendarState) => ReactNode);
 }
 
-/**
- * @internal
- */
-// export function useControlFactory(
-// date: Dayjs,
-// setDate: (date: Dayjs) => unknown,
-// ) {
-//   return useCallback(
-//     (positive: boolean, unit: 'month' | 'year', referenceDate: Dayjs) => {
-//       const modifiedDate = (
-//         positive ? date.add(1, unit) : date.subtract(1, unit)
-//       ).date(1);
-//
-//       return {
-//         disabled: positive
-//           ? modifiedDate.isAfter(referenceDate.endOf(unit))
-//           : modifiedDate.isBefore(referenceDate.startOf(unit)),
-//         execute(): void {
-//           setDate(modifiedDate);
-//         },
-//       };
-//     },
-//     [date, setDate],
-//   );
-// }
+const Calendar: FC<CalendarProps> = (props) => {
+  const {
+    children,
+    // overlap = 'overlap',
+    // altDateFormat = 'dddd D MMMM YYYY',
+    plugins = [],
+    viewedDate,
+    dayjs = () => day(),
+  } = props;
 
-const Calendar: FC<CalendarProps> = ({
-  children,
-  // minimumSelectableDate,
-  // maximumSelectableDate,
-  // overlap = 'overlap',
-  // altDateFormat = 'dddd D MMMM YYYY',
-  plugins = [],
-  viewedDate,
-  dayjs = () => day(),
-}) => {
   const dayFactory = useCallback(
     () => dayjs().utc(true).second(0).minute(0).hour(12),
     [dayjs],
   );
+
+  // const additionnalProps = plugins.map((plugin) => plugin?.calendarHook !== undefined ? plugin.calendarHook() : {});
 
   // const [temporarySelectedDate, setTemporarySelectedDate] = useState(
   //   dayFactory().day(dayjs().localeData().firstDayOfWeek()),
@@ -75,12 +49,7 @@ const Calendar: FC<CalendarProps> = ({
   //   return setTemporarySelectedDate(unwrappedDate.date(1));
   // };
 
-  // const controlFactory = useControlFactory(
-  //   temporarySelectedDate,
-  //   setTemporarySelectedDateDecorator,
-  // );
-
-  const props: CalendarState = {
+  const state: CalendarState = {
     // temporarySelectedDate,
     // setTemporarySelectedDate: setTemporarySelectedDateDecorator,
     // controls: {
@@ -97,8 +66,8 @@ const Calendar: FC<CalendarProps> = ({
   };
 
   return (
-    <CalendarContext.Provider value={props}>
-      {typeof children === 'function' ? children(props) : children}
+    <CalendarContext.Provider value={state}>
+      {typeof children === 'function' ? children(state) : children}
     </CalendarContext.Provider>
   );
 };

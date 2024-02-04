@@ -31,6 +31,7 @@ export interface CalendarState {
   // overlap: CalendarOverlap;
   plugins: Array<CalendarPlugin>;
   viewedDate: Dayjs;
+  setViewedDate: Setter<Dayjs>;
   dayjs(): Dayjs;
   // altDateFormat: string;
 }

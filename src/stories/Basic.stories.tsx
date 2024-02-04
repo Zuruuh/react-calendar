@@ -50,7 +50,6 @@ const MyCustomCalendar: FC<{ showWeekNumbers: boolean }> = ({
                 date: dayDate,
                 belongsToSelectedMonth,
                 // isSelected,
-                // @ts-expect-error
                 isOutOfRange,
                 isToday,
               }) => (

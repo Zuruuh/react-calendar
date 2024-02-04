@@ -1,19 +1,13 @@
 import type { CalendarPlugin } from '../plugin';
 import type { Dayjs } from 'dayjs';
 
-declare module '@zuruuh/react-calendar' {
-  interface DayInnerProps {
-    isOutOfRange: boolean;
-  }
-}
-
 export default function ({
   minInclusiveDate,
   maxInclusiveDate,
 }: {
   minInclusiveDate?: Dayjs;
   maxInclusiveDate?: Dayjs;
-}): CalendarPlugin {
+}): CalendarPlugin<{ dayInnerProps: { isOutOfRange: boolean } }> {
   return {
     id: 'highlight-range',
     dayHook(_, { date }) {
