@@ -16,7 +16,6 @@ export interface CalendarProps {
   // setSelectedDate: Setter<Dayjs | null>;
   viewedDate?: Dayjs;
   dayjs?(): Dayjs;
-  plugins?: Array<CalendarPlugin>;
   // overlap?: CalendarOverlap;
   // altDateFormat?: string;
   children: ReactNode | ((props: CalendarState) => ReactNode);

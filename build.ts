@@ -34,7 +34,13 @@ for (const entrypoint of ENTRYPOINTS) {
         name: '@zuruuh/react-calendar',
       },
       rollupOptions: {
-        external: [...Object.keys(packageJson.peerDependencies)],
+        external: [
+          ...Object.keys(packageJson.peerDependencies),
+          // TODO fix this so plugins can export/import from each other
+          // ...ENTRYPOINTS.filter((entry) => entry.name !== entrypoint.name).map(
+          // (entry) => resolve(import.meta.dir, 'src', ...entry.path),
+          // ),
+        ],
         output: {
           compact: true,
           globals: {

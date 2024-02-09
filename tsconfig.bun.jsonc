@@ -11,9 +11,7 @@
       "@zuruuh/react-calendar": ["./src/"]
     }
   },
-  "include": [
-    "src"
-  ],
+  "include": ["src"],
   "files": [
     "build.ts",
     "bootstrap.tsx",

@@ -1,8 +1,9 @@
 import { createContext, useContext } from 'react';
 import type { Setter } from '../types/Setter';
 import type { Dayjs } from 'dayjs';
-import { CalendarPlugin } from '../plugin';
+import { CalendarPlugins } from '../plugin';
 
+// @todo extract in plugin
 export type CalendarOverlap =
   | 'overlap'
   | 'no-overlap'
@@ -29,7 +30,7 @@ export interface CalendarState {
   // maximumSelectableDate: Dayjs;
   // controls: CalendarControls;
   // overlap: CalendarOverlap;
-  plugins: Array<CalendarPlugin>;
+  plugins: CalendarPlugins,
   viewedDate: Dayjs;
   setViewedDate: Setter<Dayjs>;
   dayjs(): Dayjs;

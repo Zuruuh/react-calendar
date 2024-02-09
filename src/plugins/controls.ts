@@ -1,19 +1,9 @@
 import type { Dayjs, ManipulateType } from 'dayjs';
 import type { CalendarControls } from '../context/CalendarContext';
 import type { CalendarPlugin } from '../plugin';
-import type { Setter } from '../types/Setter';
-import { useMemo } from 'react';
 
-declare module '@zuruuh/react-calendar' {
-  // interface CalendarProps {
-  //   viewedDate: Dayjs;
-  //   setViewedDate: Setter<Dayjs>;
-  // }
-
-  interface CalendarState {
-    controls: CalendarControls;
-  }
-}
+// import { HightlightRangePluginId } from './highlight-range';
+// console.log(HightlightRangePluginId);
 
 /**
  * @internal
@@ -24,23 +14,19 @@ export function createControlFactory(
 ): (
   positive: boolean,
   unit: ManipulateType,
-  referenceDate: Dayjs,
+  boundary: Dayjs | null,
 ) => { disabled: boolean; execute(): void } {
-  return (
-    positive: boolean,
-    unit: ManipulateType,
-    referenceDate: Dayjs | null,
-  ) => {
+  return (positive: boolean, unit: ManipulateType, boundary: Dayjs | null) => {
     const modifiedDate = (
       positive ? date.add(1, unit) : date.subtract(1, unit)
     ).date(1);
 
     return {
       disabled:
-        referenceDate !== null &&
+        boundary !== null &&
         (positive
-          ? modifiedDate.isAfter(referenceDate.endOf(unit))
-          : modifiedDate.isBefore(referenceDate.startOf(unit))),
+          ? modifiedDate.isAfter(boundary.endOf(unit))
+          : modifiedDate.isBefore(boundary.startOf(unit))),
       execute(): void {
         setDate(modifiedDate);
       },
@@ -48,7 +34,9 @@ export function createControlFactory(
   };
 }
 
-export default function ({}): CalendarPlugin<{}> {
+export default function (
+  _ = {},
+): CalendarPlugin<{ calendarInnerProps: { controls: CalendarControls } }> {
   return {
     id: 'controls',
     calendarHook(state): { controls: CalendarControls } {
@@ -59,14 +47,28 @@ export default function ({}): CalendarPlugin<{}> {
 
       return {
         controls: {
-          nextYear: controlFactory(true, 'year' /*TODO add boundary here*/),
+          nextYear: controlFactory(
+            true,
+            'year',
+            null /*TODO add boundary here*/,
+          ),
+          prevYear: controlFactory(
+            false,
+            'year',
+            null /*TODO add boundary here*/,
+          ),
+          nextMonth: controlFactory(
+            true,
+            'month',
+            null /*TODO add boundary here*/,
+          ),
+          prevMonth: controlFactory(
+            false,
+            'month',
+            null /*TODO add boundary here*/,
+          ),
         },
       };
     },
   };
 }
-
-// const plugins = useMemo(() => [range(), controls({step: '1 week'})]) // Array<CalendarPlugin>
-
-// <Calendar.Day plugins={plugins}>
-// <Calendar.Day<typeof plugins>>
