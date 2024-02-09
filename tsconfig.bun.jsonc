@@ -12,6 +12,9 @@
     }
   },
   "include": [
+    "src"
+  ],
+  "files": [
     "build.ts",
     "bootstrap.tsx",
     ".ladle/vite.config.ts",
