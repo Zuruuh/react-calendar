@@ -1,15 +1,14 @@
 import { useCallback, useState, type FC, type ReactNode } from 'react';
 import {
   CalendarContext,
-  type CalendarOverlap,
+  // type CalendarOverlap,
   type CalendarState,
 } from './context/CalendarContext';
-import type { Setter } from './types/Setter';
+// import type { Setter } from './types/Setter';
 import { Weeks } from './components/Weeks';
 import { Week } from './components/Week';
 import { Day } from './components/Day';
 import day, { type Dayjs } from 'dayjs';
-import { CalendarPlugin } from './plugin';
 
 export interface CalendarProps {
   // selectedDate: Dayjs | null;
@@ -26,7 +25,6 @@ const Calendar: FC<CalendarProps> = (props) => {
     children,
     // overlap = 'overlap',
     // altDateFormat = 'dddd D MMMM YYYY',
-    plugins = [],
     viewedDate,
     dayjs = () => day(),
   } = props;

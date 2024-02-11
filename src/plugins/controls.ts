@@ -1,6 +1,7 @@
 import type { Dayjs, ManipulateType } from 'dayjs';
 import type { CalendarControls } from '../context/CalendarContext';
 import type { CalendarPlugin } from '../plugin';
+import { Setter } from '../types/Setter';
 
 // import { HightlightRangePluginId } from './highlight-range';
 // console.log(HightlightRangePluginId);
@@ -34,9 +35,10 @@ export function createControlFactory(
   };
 }
 
-export default function (
-  _ = {},
-): CalendarPlugin<{ calendarInnerProps: { controls: CalendarControls } }> {
+export default function (_ = {}): CalendarPlugin<{
+  rootConfiguration: { viewedDate: Dayjs; setViewedDate: Setter<Dayjs> };
+  calendarInnerProps: { controls: CalendarControls };
+}> {
   return {
     id: 'controls',
     calendarHook(state): { controls: CalendarControls } {

@@ -2,10 +2,11 @@ import type { CalendarState } from './context/CalendarContext';
 import type { DayContextState } from './context/DayContext';
 
 export type CalendarPlugins = ReadonlyArray<
-  CalendarPlugin<Record<PropertyKey, unknown>>
+  CalendarPlugin<CalendarPluginDefinition>
 >;
 
 export interface CalendarPluginDefinition {
+  rootConfiguration?: Record<string, unknown>;
   dayInnerProps?: Record<string, unknown>;
   calendarInnerProps?: Record<string, unknown>;
 }
@@ -18,5 +19,7 @@ export interface CalendarPlugin<T extends CalendarPluginDefinition> {
     calendarState: CalendarState,
     dayState: DayContextState,
   ): T['dayInnerProps'];
-  calendarHook?(calendarState: CalendarState): T['calendarInnerProps'];
+  calendarHook?(
+    calendarState: CalendarState & T['rootConfiguration'],
+  ): T['calendarInnerProps'];
 }

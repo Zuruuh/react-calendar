@@ -30,9 +30,8 @@ export interface CalendarState {
   // maximumSelectableDate: Dayjs;
   // controls: CalendarControls;
   // overlap: CalendarOverlap;
-  plugins: CalendarPlugins,
-  viewedDate: Dayjs;
-  setViewedDate: Setter<Dayjs>;
+  viewedDate?: Dayjs;
+  // setViewedDate: Setter<Dayjs>;
   dayjs(): Dayjs;
   // altDateFormat: string;
 }
