@@ -9,7 +9,9 @@ export default function ({
 }: {
   minInclusiveDate?: Dayjs;
   maxInclusiveDate?: Dayjs;
-} = {}): CalendarPlugin<{ dayInnerProps: { isOutOfRange: boolean } }> {
+} = {}): CalendarPlugin<{
+  dayInnerProps: { isOutOfRange: boolean };
+}> {
   return {
     // id: HightlightRangePluginId,
     id: 'highlight-range',

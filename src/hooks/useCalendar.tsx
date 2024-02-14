@@ -1,8 +1,14 @@
 import { useMemo, type FC, ReactNode, useCallback } from 'react';
-import type { CalendarPlugin, CalendarPlugins } from '../plugin';
+import type {
+  CalendarPlugin,
+  CalendarPluginDefinition,
+  CalendarPlugins,
+} from '../plugin';
 import day, { type Dayjs } from 'dayjs';
-import type { CalendarState } from '../context/CalendarContext';
-import type { UnionToIntersection } from '../types/UnionToIntersection';
+import type {
+  CalendarControls,
+  CalendarState,
+} from '../context/CalendarContext';
 
 export interface Calendar<TPlugins extends CalendarPlugins> {
   plugins: TPlugins;
@@ -11,40 +17,40 @@ export interface Calendar<TPlugins extends CalendarPlugins> {
   };
 }
 
-export type CalendarOptions< TPlugins extends CalendarPlugins> = {
-  plugins: TPlugins;
+type MergedPluginProps<
+  T extends CalendarPlugins,
+  Key extends keyof CalendarPluginDefinition,
+> = T extends [infer First, ...infer Rest]
+  ? First extends CalendarPlugin<infer FirstProps>
+    ? Rest extends CalendarPlugins
+      ? FirstProps[Key] & MergedPluginProps<Rest, Key>
+      : FirstProps[Key]
+    : {}
+  : {};
+
+export type CalendarOptions<TPlugins extends CalendarPlugins> = {
   viewedDate?: Dayjs;
   dayjs?: () => Dayjs;
-} & (TPlugins[number] extends CalendarPlugin<infer U>
-  ? U
-  : {});
-  // ? UnionToIntersection<U['rootConfiguration']> extends Record<string, unknown>
-  // ? UnionToIntersection<U['rootConfiguration']> extends undefined
-    // ? never
-    // : UnionToIntersection<U['rootConfiguration']>
-    // : never);
-  // : {});
+} & MergedPluginProps<TPlugins, 'rootConfiguration'>;
 
 export type CalendarProps<TPlugins extends CalendarPlugins> = {
   children:
     | ReactNode
     | ((
         props: CalendarState &
-          (TPlugins[number] extends CalendarPlugin<infer U>
-            ? UnionToIntersection<U['calendarInnerProps']>
-            : never),
+          MergedPluginProps<TPlugins, 'calendarInnerProps'>,
       ) => ReactNode);
 };
 
-export function useCalendar<
-  const TPlugins extends CalendarPlugins = readonly [],
->({
+export function useCalendar<const TPlugins extends Readonly<CalendarPlugins> = readonly []>({
   plugins,
   dayjs = () => day(),
   viewedDate,
   ...props
-}: CalendarOptions<TPlugins>): Calendar<TPlugins> {
-  function RootComponent({ children }: CalendarProps<TPlugins>) {
+}: { plugins: TPlugins } & CalendarOptions<TPlugins extends readonly [...infer U] ? U : never>): Calendar<TPlugins extends readonly [...infer U] ? U : never> {
+  type TMutablePlugins = TPlugins extends readonly [...infer U] ? U : never;
+
+  function RootComponent({ children }: CalendarProps<TMutablePlugins>) {
     const dayFactory = useCallback(
       () => dayjs().utc(true).second(0).minute(0).hour(12),
       [dayjs],
@@ -61,6 +67,7 @@ export function useCalendar<
       ...plugins
         .map((plugin) =>
           plugin.calendarHook !== undefined
+          // s-expect-error
             ? plugin.calendarHook(baseState)
             : {},
         )

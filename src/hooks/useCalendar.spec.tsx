@@ -1,9 +1,13 @@
 import { useMemo } from 'react';
 import highlightRange from '../plugins/highlight-range';
 import controls from '../plugins/controls';
-import { CalendarPlugin, CalendarPluginDefinition, CalendarPlugins } from '../plugin';
+import {
+  CalendarPlugin,
+  CalendarPluginDefinition,
+  CalendarPlugins,
+} from '../plugin';
 import { CalendarControls } from '../context/CalendarContext';
-import { CalendarOptions, useCalendar } from './useCalendar';
+import { CalendarOptions, MergedPluginProps, useCalendar } from './useCalendar';
 import type { Dayjs } from 'dayjs';
 import type { Setter } from '../types/Setter';
 
@@ -43,18 +47,8 @@ type Equals<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y
   //   [K in keyof T]: T[K];
   // };
 
-  type Options = MergedPluginProps<typeof plugins, 'dayInnerProps'>;
+  type Options = MergedPluginProps<typeof plugins, 'rootConfiguration'>;
+  type E = [boolean] extends [infer First, ...infer Rest] ? Rest : never;
 
   return <calendar.Root>{({ dayjs }) => <p>hello world</p>}</calendar.Root>;
 };
-
-type MergedPluginProps<T extends CalendarPlugins, Key extends keyof CalendarPluginDefinition> = T extends [
-  infer First,
-  ...infer Rest
-]
-  ? First extends CalendarPlugin<infer FirstProps>
-    ? Rest extends CalendarPlugins
-      ? FirstProps[Key] & MergedPluginProps<Rest, Key>
-      : FirstProps[Key]
-    : {}
-  : {};
