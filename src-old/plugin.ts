@@ -6,7 +6,7 @@ export type CalendarPlugins = Array<CalendarPlugin<CalendarPluginDefinition>>;
 export interface CalendarPluginDefinition {
   rootConfiguration?: Record<string, unknown>;
   dayInnerProps?: Record<string, unknown>;
-  calendarInnerProps?: Record<string, unknown>;
+  rootState?: Record<string, unknown>;
 }
 
 export interface CalendarPlugin<T extends CalendarPluginDefinition> {
@@ -19,5 +19,11 @@ export interface CalendarPlugin<T extends CalendarPluginDefinition> {
   ): T['dayInnerProps'];
   calendarHook?(
     calendarState: CalendarState & T['rootConfiguration'],
-  ): T['calendarInnerProps'];
+  ): T['rootState'];
+}
+
+export function definePlugins<const T extends Array<CalendarPlugin<{}>>>(
+  plugins: T,
+): Readonly<T> {
+  return Object.freeze(plugins);
 }

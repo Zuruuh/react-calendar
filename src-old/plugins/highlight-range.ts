@@ -3,7 +3,7 @@ import type { Dayjs } from 'dayjs';
 
 // export const HightlightRangePluginId = Symbol('highligh-range');
 
-export default function ({
+export function HighlightRangePlugin({
   minInclusiveDate,
   maxInclusiveDate,
 }: {

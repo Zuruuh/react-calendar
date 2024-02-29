@@ -1,4 +1,4 @@
-import { useCallback, useState, type FC, type ReactNode } from 'react';
+import { useCallback, type FC, type ReactNode } from 'react';
 import {
   CalendarContext,
   // type CalendarOverlap,
@@ -13,11 +13,12 @@ import day, { type Dayjs } from 'dayjs';
 export interface CalendarProps {
   // selectedDate: Dayjs | null;
   // setSelectedDate: Setter<Dayjs | null>;
-  viewedDate?: Dayjs;
-  dayjs?(): Dayjs;
+  // viewedDate?: Dayjs;
+  // dayjs?(): Dayjs;
   // overlap?: CalendarOverlap;
   // altDateFormat?: string;
-  children: ReactNode | ((props: CalendarState) => ReactNode);
+  // children: ReactNode | ((props: CalendarState) => ReactNode);
+  children: ReactNode;
 }
 
 const Calendar: FC<CalendarProps> = (props) => {
@@ -25,8 +26,8 @@ const Calendar: FC<CalendarProps> = (props) => {
     children,
     // overlap = 'overlap',
     // altDateFormat = 'dddd D MMMM YYYY',
-    viewedDate,
-    dayjs = () => day(),
+    // viewedDate,
+    // dayjs = () => day(),
   } = props;
 
   const dayFactory = useCallback(
@@ -57,15 +58,14 @@ const Calendar: FC<CalendarProps> = (props) => {
     // },
     // overlap,
     // altDateFormat,
-    plugins,
     viewedDate: viewedDate ?? dayFactory(),
     dayjs: dayFactory,
   };
 
   return (
-    <CalendarContext.Provider value={state}>
-      {typeof children === 'function' ? children(state) : children}
-    </CalendarContext.Provider>
+    // <CalendarContext.Provider value={state}>
+    {}
+    // </CalendarContext.Provider>
   );
 };
 

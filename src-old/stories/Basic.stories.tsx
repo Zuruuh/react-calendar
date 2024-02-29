@@ -1,12 +1,13 @@
 import styles from './Basic.stories.module.scss';
 import { useState, type FC, useMemo } from 'react';
-import { Calendar, type WeeksInnerProps, CalendarControls } from '../';
+import { Calendar, type WeeksInnerProps, CalendarControls, useCalendar, definePlugins } from '../';
 import type { Story } from '@ladle/react';
 import { withStrictMode } from '../ladle/decorators/withStrictMode';
 import clsx from 'clsx';
 import dayjs, { type Dayjs } from 'dayjs';
 
-import highlightRange from '../plugins/highlight-range';
+import { HighlightRangePlugin } from '../plugins/highlight-range';
+import { ControlsPlugin } from '../plugins/controls';
 
 const MyControls: FC<{ controls: CalendarControls }> = ({ controls }) => {
   return (
@@ -29,71 +30,74 @@ const MyControls: FC<{ controls: CalendarControls }> = ({ controls }) => {
   );
 };
 
-const MyCustomCalendar: FC<{ showWeekNumbers: boolean }> = ({
-  showWeekNumbers,
-}) => {
-  return (
-    <Calendar.Weeks>
-      {({ weekNumbers }: WeeksInnerProps) => (
-        <div className={styles.week}>
-          {showWeekNumbers ? (
-            <div className={styles.weekNumberWrapper}>
-              <p className={styles.weekNumber}>{weekNumbers.join('-')}</p>
-            </div>
-          ) : (
-            <></>
-          )}
-          <Calendar.Week>
-            <Calendar.Day>
-              {({
-                // onClick: onDayClick,
-                date: dayDate,
-                belongsToSelectedMonth,
-                // isSelected,
-                isOutOfRange,
-                isToday,
-              }) => (
-                <button
-                  type="button"
-                  className={clsx(styles.day, {
-                    // [styles.selectionned]: isSelected,
-                    [styles.today]: isToday,
-                    [styles.month]: belongsToSelectedMonth,
-                  })}
-                  disabled={isOutOfRange}
-                  // onClick={onDayClick}
-                >
-                  {dayDate.date()}
-                </button>
-              )}
-            </Calendar.Day>
-          </Calendar.Week>
-        </div>
-      )}
-    </Calendar.Weeks>
-  );
-};
+// const MyCustomCalendar: FC<{ showWeekNumbers: boolean }> = ({
+  // showWeekNumbers,
+// }) => {
+//
+//   return (
+//     <Calendar.Weeks>
+//       {({ weekNumbers }: WeeksInnerProps) => (
+//         <div className={styles.week}>
+//           {showWeekNumbers ? (
+//             <div className={styles.weekNumberWrapper}>
+//               <p className={styles.weekNumber}>{weekNumbers.join('-')}</p>
+//             </div>
+//           ) : (
+//             <></>
+//           )}
+//           <Calendar.Week>
+//             <Calendar.Day>
+//               {({
+//                 // onClick: onDayClick,
+//                 date: dayDate,
+//                 belongsToSelectedMonth,
+//                 // isSelected,
+//                 isOutOfRange,
+//                 isToday,
+//               }) => (
+//                 <button
+//                   type="button"
+//                   className={clsx(styles.day, {
+//                     // [styles.selectionned]: isSelected,
+//                     [styles.today]: isToday,
+//                     [styles.month]: belongsToSelectedMonth,
+//                   })}
+//                   disabled={isOutOfRange}
+//                   // onClick={onDayClick}
+//                 >
+//                   {dayDate.date()}
+//                 </button>
+//               )}
+//             </Calendar.Day>
+//           </Calendar.Week>
+//         </div>
+//       )}
+//     </Calendar.Weeks>
+//   );
+// };
 
-export const Simple: Story = (): React.ReactNode => {
+export const DatePicker: Story = (): React.ReactNode => {
   const [date, setDate] = useState<Dayjs | null>(null);
+  const [viewedDate, setViewedDate] = useState<Dayjs>(dayjs());
+
   const plugins = useMemo(
-    () => [
-      highlightRange({
+    () => definePlugins([
+      ControlsPlugin(),
+      HighlightRangePlugin({
         minInclusiveDate: dayjs().subtract(7, 'days'),
         maxInclusiveDate: dayjs().add(7, 'days'),
       }),
-    ],
+    ]),
     [],
   );
+  const {calendar, controls} = useCalendar({ plugins, viewedDate, setViewedDate })
 
   return (
     <>
       <p>
         The current selected date is: {date?.toString() ?? '(not selected yet)'}
       </p>
-      <Calendar.Root
-        plugins={plugins} /*setSelectedDate={setDate} selectedDate={date}*/
-      >
+      <calendar.Root>
         {(/*{ controls }*/) => (
           <>
             {/*<MyControls controls={controls} />*/}

@@ -35,9 +35,9 @@ export function createControlFactory(
   };
 }
 
-export default function (_ = {}): CalendarPlugin<{
+export function ControlsPlugin(_ = {}): CalendarPlugin<{
   rootConfiguration: { viewedDate: Dayjs; setViewedDate: Setter<Dayjs> };
-  calendarInnerProps: { controls: CalendarControls };
+  rootState: { controls: CalendarControls };
 }> {
   return {
     id: 'controls',
