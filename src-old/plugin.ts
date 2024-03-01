@@ -1,6 +1,3 @@
-import type { CalendarState } from './context/CalendarContext';
-import type { DayContextState } from './context/DayContext';
-
 export type CalendarPlugins = Array<CalendarPlugin<CalendarPluginDefinition>>;
 
 export interface CalendarPluginDefinition {

@@ -4,10 +4,6 @@ import type { Dayjs } from 'dayjs';
 import { CalendarPlugins } from '../plugin';
 
 // @todo extract in plugin
-export type CalendarOverlap =
-  | 'overlap'
-  | 'no-overlap'
-  | 'no-overlap-with-offset';
 
 export interface CalendarControl {
   execute(): void;

@@ -4,16 +4,27 @@ import { type FC, ReactNode, useState, useMemo } from 'react';
 //   CalendarPluginDefinition,
 //   CalendarPlugins,
 // } from '../plugin';
-import day, { type Dayjs } from 'dayjs';
-import { CalendarContext } from '../context/CalendarContext';
+import { type Dayjs } from 'dayjs';
 
 export type Calendar /*<TPlugins extends CalendarPlugins>*/ = {
-  weeks: Record<string, Record<string, DayState>>;
+  // weeks: Record<string, Record<string, DayState>>;
+  weeks: Array<WeekState>;
 }; // & MergedPluginProps<TPlugins, 'rootState'>;
+
+export interface WeekState {
+  startWeek: number;
+  endWeek: number;
+  days: Array<DayState>;
+}
 
 interface DayState {
   date: Dayjs;
+  outsideViewedMonth: boolean;
 }
+
+export type CalendarOverlap =
+  | 'overlap'
+  | 'no-overlap'
 
 // type MergedPluginProps<
 //   T extends CalendarPlugins,
@@ -29,6 +40,7 @@ interface DayState {
 export type CalendarOptions /*<TPlugins extends CalendarPlugins>*/ = {
   initialViewedDate: Dayjs;
   dayjs: () => Dayjs;
+  overlap: CalendarOverlap;
 }; // & MergedPluginProps<TPlugins, 'rootConfiguration'>;
 
 export type CalendarProps = {
@@ -41,19 +53,39 @@ export function useCalendar(
   TPlugins extends readonly [...infer U] ? U : never>*/,
 ): Calendar /*<TPlugins extends readonly [...infer U] ? U : never> */ {
   return useMemo(() => {
-    const api: Calendar = { weeks: {} };
+    const startOfMonth = props.initialViewedDate.startOf('month').hour(0).minute(0).second(0);
+    const endOfMonth = props.initialViewedDate.endOf('month').hour(23).minute(59).second(59);
+
+    const api: Calendar = { weeks: [] };
     const weeks = Array.from(
-      generateWeeksBasedOnOverlap(props.initialViewedDate),
+      generateWeeksBasedOnOverlap(startOfMonth, props.overlap),
     );
+    console.log(weeks);
 
     for (let i = 0; i < weeks.length; i++) {
       const week = weeks[i]!;
-      api.weeks[week.toString()] ??= {};
+      const days: Array<DayState> = [];
 
       for (let j = 0; j < 7; j++) {
-        const date = props.initialViewedDate.add(i, 'weeks').add(j, 'days');
-        api.weeks[week.toString()]![date.format('YYYY-MM-D')] = { date };
+        let date: Dayjs;
+        switch (props.overlap) {
+          case 'overlap':
+            date = startOfMonth.startOf('week').add(i, 'weeks').add(j, 'days');
+            break;
+          case 'no-overlap':
+            date = startOfMonth.add(i, 'weeks').add(j, 'days');
+            break;
+        }
+
+        days.push({
+          date,
+          outsideViewedMonth:
+            date.isBefore(startOfMonth) ||
+            date.isAfter(endOfMonth),
+        });
       }
+
+      api.weeks.push({ startWeek: week[0], endWeek: week[1] ?? week[0], days });
     }
 
     return api;
@@ -84,30 +116,29 @@ function overlapLoopCheck(
  */
 export function* generateWeeksBasedOnOverlap(
   referenceDate: Dayjs,
-  // overlap: CalendarOverlap,
-): Generator<number> {
+  overlap: CalendarOverlap,
+): Generator<[number, null | number]> {
   const startOfMonth = referenceDate.startOf('month');
 
-  // switch (overlap) {
-  // case 'overlap':
-  // case 'no-overlap-with-offset':
-  for (
-    let i = 0;
-    overlapLoopCheck(i, startOfMonth, referenceDate.month());
-    i++
-  ) {
-    yield startOfMonth.add(i, 'week').startOf('week').week();
-  }
+  switch (overlap) {
+    case 'overlap':
+      for (
+        let i = 0;
+        overlapLoopCheck(i, startOfMonth, referenceDate.month());
+        i++
+      ) {
+        yield [startOfMonth.add(i, 'week').startOf('week').week(), null];
+      }
 
-  // break;
-  //   case 'no-overlap':
-  //     for (let i = 0; i < Math.ceil(startOfMonth.daysInMonth() / 7); i++) {
-  //       yield [
-  //         startOfMonth.add(i, 'week').week(),
-  //         startOfMonth.add(i + 1, 'week').week(),
-  //       ];
-  //     }
-  //
-  //     break;
-  // }
+      break;
+    case 'no-overlap':
+      for (let i = 0; i < Math.ceil(startOfMonth.daysInMonth() / 7); i++) {
+        yield [
+          startOfMonth.add(i, 'week').week(),
+          startOfMonth.add(i + 1, 'week').week(),
+        ];
+      }
+
+      break;
+  }
 }
