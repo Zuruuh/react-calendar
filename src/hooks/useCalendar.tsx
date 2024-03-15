@@ -22,9 +22,7 @@ interface DayState {
   outsideViewedMonth: boolean;
 }
 
-export type CalendarOverlap =
-  | 'overlap'
-  | 'no-overlap'
+export type CalendarOverlap = 'overlap' | 'no-overlap';
 
 // type MergedPluginProps<
 //   T extends CalendarPlugins,
@@ -53,8 +51,16 @@ export function useCalendar(
   TPlugins extends readonly [...infer U] ? U : never>*/,
 ): Calendar /*<TPlugins extends readonly [...infer U] ? U : never> */ {
   return useMemo(() => {
-    const startOfMonth = props.initialViewedDate.startOf('month').hour(0).minute(0).second(0);
-    const endOfMonth = props.initialViewedDate.endOf('month').hour(23).minute(59).second(59);
+    const startOfMonth = props.initialViewedDate
+      .startOf('month')
+      .hour(0)
+      .minute(0)
+      .second(0);
+    const endOfMonth = props.initialViewedDate
+      .endOf('month')
+      .hour(23)
+      .minute(59)
+      .second(59);
 
     const api: Calendar = { weeks: [] };
     const weeks = Array.from(
@@ -80,8 +86,7 @@ export function useCalendar(
         days.push({
           date,
           outsideViewedMonth:
-            date.isBefore(startOfMonth) ||
-            date.isAfter(endOfMonth),
+            date.isBefore(startOfMonth) || date.isAfter(endOfMonth),
         });
       }
 

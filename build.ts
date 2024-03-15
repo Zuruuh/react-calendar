@@ -1,21 +1,25 @@
 import { resolve } from 'node:path';
 import { build } from 'vite';
 import packageJson from './package.json' assert { type: 'json' };
-import { $ } from 'bun';
-import { rm, readdir } from 'node:fs/promises';
+import { $, Glob } from 'bun';
+import { rm } from 'node:fs/promises';
+
+const plugins = new Glob('**/*.{ts,tsx}');
 
 const ENTRYPOINTS = [
   {
     name: 'react-calendar.[format].js',
-    path: ['index.ts'],
+    path: 'index.ts',
   },
-  ...(await readdir('src/plugins'))
-    .map((file) => file.replace('.ts', ''))
-    .map((plugin) => ({
-      name: `plugins/${plugin}.[format].js`,
-      path: ['plugins', `${plugin}.ts`],
-    })),
-] satisfies Array<{ name: string; path: Array<string> }>;
+  ...(
+    await Array.fromAsync(
+      plugins.scan({ cwd: `${import.meta.dir}/src/plugins` }),
+    )
+  ).map((plugin) => ({
+    name: `plugins/${plugin.replace('tsx', '').replace('ts', '')}.[format].js`,
+    path: `plugins/${plugin}`,
+  })),
+] satisfies Array<{ name: string; path: string }>;
 
 await rm(`${import.meta.dir}/dist`, { force: true, recursive: true });
 
@@ -30,7 +34,7 @@ for (const entrypoint of ENTRYPOINTS) {
     build: {
       emptyOutDir: false,
       lib: {
-        entry: resolve(import.meta.dir, 'src', ...entrypoint.path),
+        entry: resolve(import.meta.dir, 'src', entrypoint.path),
         name: '@zuruuh/react-calendar',
       },
       rollupOptions: {
