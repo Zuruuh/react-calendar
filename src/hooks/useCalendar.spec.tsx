@@ -1,5 +1,5 @@
 import { expect, test } from 'bun:test';
-import { WeekState, useCalendar } from './useCalendar';
+import { type WeekState, useCalendar } from './useCalendar';
 import { render } from '@testing-library/react';
 import dayjs from 'dayjs';
 

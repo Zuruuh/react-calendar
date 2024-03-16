@@ -1,15 +1,9 @@
-import { type FC, ReactNode, useState, useMemo } from 'react';
-// import type {
-//   CalendarPlugin,
-//   CalendarPluginDefinition,
-//   CalendarPlugins,
-// } from '../plugin';
-import { type Dayjs } from 'dayjs';
+import { type ReactNode, useMemo } from 'react';
+import type { Dayjs } from 'dayjs';
 
-export type Calendar /*<TPlugins extends CalendarPlugins>*/ = {
-  // weeks: Record<string, Record<string, DayState>>;
+export type Calendar = {
   weeks: Array<WeekState>;
-}; // & MergedPluginProps<TPlugins, 'rootState'>;
+};
 
 export interface WeekState {
   startWeek: number;
@@ -24,32 +18,17 @@ interface DayState {
 
 export type CalendarOverlap = 'overlap' | 'no-overlap';
 
-// type MergedPluginProps<
-//   T extends CalendarPlugins,
-//   Key extends keyof CalendarPluginDefinition,
-// > = T extends [infer First, ...infer Rest]
-//   ? First extends CalendarPlugin<infer FirstProps>
-//     ? Rest extends CalendarPlugins
-//       ? FirstProps[Key] & MergedPluginProps<Rest, Key>
-//       : FirstProps[Key]
-//     : {}
-//   : {};
-
-export type CalendarOptions /*<TPlugins extends CalendarPlugins>*/ = {
+export type CalendarOptions = {
   initialViewedDate: Dayjs;
   dayjs: () => Dayjs;
   overlap: CalendarOverlap;
-}; // & MergedPluginProps<TPlugins, 'rootConfiguration'>;
+};
 
 export type CalendarProps = {
   children: ReactNode;
 };
 
-export function useCalendar(
-  // <const TPlugins extends Readonly</*CalendarPlugins*/Array<never>> = readonly [],>
-  props: /*{ plugins: TPlugins }*/ CalendarOptions /*<
-  TPlugins extends readonly [...infer U] ? U : never>*/,
-): Calendar /*<TPlugins extends readonly [...infer U] ? U : never> */ {
+export function useCalendar(props: CalendarOptions): Calendar {
   return useMemo(() => {
     const startOfMonth = props.initialViewedDate
       .startOf('month')
@@ -66,7 +45,6 @@ export function useCalendar(
     const weeks = Array.from(
       generateWeeksBasedOnOverlap(startOfMonth, props.overlap),
     );
-    console.log(weeks);
 
     for (let i = 0; i < weeks.length; i++) {
       const week = weeks[i]!;

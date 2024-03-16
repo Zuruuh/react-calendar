@@ -21,12 +21,7 @@
     "email": "zuruh.dev@proton.me",
     "url": "https://github.com/Zuruuh"
   },
-  "files": [
-    "dist",
-    "package.json",
-    "README.md",
-    "LICENSE.txt"
-  ],
+  "files": ["dist", "package.json", "README.md", "LICENSE.txt"],
   "main": "dist/react-calendar.umd.cjs",
   "module": "dist/react-calendar.es.js",
   "types": "./dist/index.d.ts",
