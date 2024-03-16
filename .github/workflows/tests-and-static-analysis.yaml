@@ -1,0 +1,58 @@
+name: Tests and static analysis
+
+on:
+  push:
+    branches: ["dev"]
+  pull_request:
+    branches: ["dev"]
+
+jobs:
+  setup:
+    runs-on: macos-14
+    strategy:
+      fail-fast: false
+
+    steps:
+      - name: 🛒 Checkout branch
+        uses: actions/checkout@v4
+
+      - name: ✨ Install bun
+        uses: oven-sh/setup-bun@v1.1.1
+        with:
+          bun-version: 1.0.26
+
+      - uses: actions/cache@v4
+        name: 📦 Setup deps cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/bun.lockb') }}
+          restore-keys: |
+            ${{ runner.os }}-modules-
+
+      - name: ➕ Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: 📦 Build package
+        run: bun run build
+
+      - name: 📦 Build documentation
+        run: bun run docs:build
+
+      - name: 🚨 Check formatting
+        run: bun run format
+
+      - name: 🚨 Lint
+        run: bun run lint
+
+      - name: 🧪 Tests
+        run: bun test
+
+      - name: 📖 Check for typos
+        uses: crate-ci/typos@master
+
+      - name: 📖 Check for broken links
+        uses: lycheeverse/lychee-action@v1.9.0
+        with:
+          fail: true
+          args: -v docs/.vitepress/dist docs/**/*.md docs/*.md https://calendar.zuruh.dev README.md CONTRIBUTING.md
+          token: ${{ secrets.GH_TOKEN }}

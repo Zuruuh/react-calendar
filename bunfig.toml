@@ -1,9 +1,12 @@
 telemetry = false
 
 [test]
+root = "./src"
 coverage = true
 preload = ["./bootstrap.tsx"]
 coverageSkipTestFiles = true
 
 [install.lockfile]
 print = "yarn"
+peer = true
+dev = true

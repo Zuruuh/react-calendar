@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "target": "ESNext",
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true,
+    "noEmit": true,
+    "paths": {
+      "@zuruuh/react-calendar": ["./src/"]
+    }
+  },
+  "files": [
+    "build.ts",
+    "bootstrap.tsx",
+    "package.json",
+    "docs/.vitepress/config.ts"
+  ]
+}

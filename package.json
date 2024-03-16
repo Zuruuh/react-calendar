@@ -1,56 +1,95 @@
 {
-  "name": "@zuruuh/react-date-picker",
-  "private": false,
-  "version": "0.0.1",
-  "type": "module",
-  "types": "dist/index.d.ts",
-  "license": "MIT",
-  "files": [
-    "dist",
-    "package.json",
-    "README.md",
-    "LICENSE.txt"
+  "$schema": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/package.json",
+  "name": "@zuruuh/react-calendar",
+  "description": "A customizable calendar component for react",
+  "keywords": [
+    "react",
+    "component",
+    "headless",
+    "native",
+    "date",
+    "picker",
+    "dayjs"
   ],
-  "main": "dist/react-date-picker.umd.cjs",
-  "module": "dist/react-date-picker.js",
-  "exports": {
-    ".": {
-      "import": "./dist/react-date-picker.js",
-      "require": "./dist/react-date-picker.umd.cjs"
-    }
+  "private": false,
+  "version": "0.2.0",
+  "type": "module",
+  "license": "MIT",
+  "homepage": "https://calendar.zuruh.dev",
+  "author": {
+    "name": "Zuruh",
+    "email": "zuruh.dev@proton.me",
+    "url": "https://github.com/Zuruuh"
   },
+  "files": ["dist", "package.json", "README.md", "LICENSE.txt"],
+  "main": "dist/react-calendar.umd.cjs",
+  "module": "dist/react-calendar.es.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "ladle dev",
-    "build": "vite build",
+    "build": "bun build.ts",
     "lint": "bun lint:biome && bun lint:typescript",
     "lint:biome": "biome lint .",
-    "lint:typescript": "tsc --noEmit true --emitDeclarationOnly false",
+    "lint:typescript": "tsc --project tsconfig.json && tsc --project tsconfig.bun.jsonc",
     "format": "biome format .",
     "preview": "ladle preview",
-    "preview:build": "ladle build"
+    "preview:build": "ladle build",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/react-calendar.es.js",
+      "require": "./dist/react-calendar.umd.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./plugins/date-picker": {
+      "import": "./dist/plugins/date-picker.es.js",
+      "require": "./dist/plugins/date-picker.umd.js",
+      "types": "./dist/plugins/date-picker.d.ts"
+    },
+    "./plugins/controls": {
+      "import": "./dist/plugins/controls.es.js",
+      "require": "./dist/plugins/controls.umd.js",
+      "types": "./dist/plugins/controls.d.ts"
+    },
+    "./plugins/keyboard-navigation": {
+      "import": "./dist/plugins/keyboard-navigation.es.js",
+      "require": "./dist/plugins/keyboard-navigation.umd.js",
+      "types": "./dist/plugins/keyboard-navigation.d.ts"
+    },
+    "./plugins/hightlight-range": {
+      "import": "./dist/plugins/hightlight-range.es.js",
+      "require": "./dist/plugins/hightlight-range.umd.js",
+      "types": "./dist/plugins/hightlight-range.d.ts"
+    },
+    "./plugins/week-overlap": {
+      "import": "./dist/plugins/week-overlap.es.js",
+      "require": "./dist/plugins/week-overlap.umd.js",
+      "types": "./dist/plugins/week-overlap.d.ts"
+    }
   },
   "peerDependencies": {
     "dayjs": "^1.11.10",
     "react": "^18.0.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.5.2",
-    "@fontsource/poppins": "^5.0.8",
-    "@happy-dom/global-registrator": "^13.1.4",
+    "@biomejs/biome": "^1.6.1",
+    "@fontsource/poppins": "^5.0.12",
+    "@happy-dom/global-registrator": "^13.8.6",
     "@ladle/react": "^4.0.2",
     "@testing-library/dom": "^9.3.4",
-    "@testing-library/react": "^14.1.2",
+    "@testing-library/react": "^14.2.1",
     "@testing-library/user-event": "^14.5.2",
-    "@types/react": "^18.2.48",
+    "@types/bun": "^1.0.8",
+    "@types/react": "^18.2.66",
     "@vitejs/plugin-react": "^4.2.1",
-    "bun-types": "1.0.23",
     "clsx": "^2.1.0",
-    "dayjs": "^1.11.10",
-    "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sass": "^1.70.0",
-    "typescript": "^5.3.3",
-    "vite": "^5.0.11",
-    "vite-plugin-dts": "^3.7.1"
+    "sass": "^1.72.0",
+    "typescript": "^5.4.2",
+    "vite": "^5.1.6",
+    "vitepress": "^1.0.0-rc.45"
   }
 }

@@ -1,0 +1,351 @@
+// Bun Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Calendar with default overlap mode 1`] = `
+[
+  {
+    "days": [
+      {
+        "date": "29-01-2024",
+        "outsideViewedMonth": true,
+      },
+      {
+        "date": "30-01-2024",
+        "outsideViewedMonth": true,
+      },
+      {
+        "date": "31-01-2024",
+        "outsideViewedMonth": true,
+      },
+      {
+        "date": "1-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "2-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "3-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "4-02-2024",
+        "outsideViewedMonth": false,
+      },
+    ],
+    "endWeek": 5,
+    "startWeek": 5,
+  },
+  {
+    "days": [
+      {
+        "date": "5-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "6-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "7-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "8-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "9-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "10-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "11-02-2024",
+        "outsideViewedMonth": false,
+      },
+    ],
+    "endWeek": 6,
+    "startWeek": 6,
+  },
+  {
+    "days": [
+      {
+        "date": "12-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "13-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "14-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "15-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "16-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "17-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "18-02-2024",
+        "outsideViewedMonth": false,
+      },
+    ],
+    "endWeek": 7,
+    "startWeek": 7,
+  },
+  {
+    "days": [
+      {
+        "date": "19-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "20-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "21-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "22-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "23-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "24-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "25-02-2024",
+        "outsideViewedMonth": false,
+      },
+    ],
+    "endWeek": 8,
+    "startWeek": 8,
+  },
+  {
+    "days": [
+      {
+        "date": "26-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "27-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "28-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "29-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "1-03-2024",
+        "outsideViewedMonth": true,
+      },
+      {
+        "date": "2-03-2024",
+        "outsideViewedMonth": true,
+      },
+      {
+        "date": "3-03-2024",
+        "outsideViewedMonth": true,
+      },
+    ],
+    "endWeek": 9,
+    "startWeek": 9,
+  },
+]
+`;
+
+exports[`Calendar with no-overlap mode 1`] = `
+[
+  {
+    "days": [
+      {
+        "date": "1-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "2-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "3-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "4-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "5-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "6-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "7-02-2024",
+        "outsideViewedMonth": false,
+      },
+    ],
+    "endWeek": 6,
+    "startWeek": 5,
+  },
+  {
+    "days": [
+      {
+        "date": "8-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "9-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "10-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "11-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "12-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "13-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "14-02-2024",
+        "outsideViewedMonth": false,
+      },
+    ],
+    "endWeek": 7,
+    "startWeek": 6,
+  },
+  {
+    "days": [
+      {
+        "date": "15-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "16-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "17-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "18-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "19-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "20-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "21-02-2024",
+        "outsideViewedMonth": false,
+      },
+    ],
+    "endWeek": 8,
+    "startWeek": 7,
+  },
+  {
+    "days": [
+      {
+        "date": "22-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "23-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "24-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "25-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "26-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "27-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "28-02-2024",
+        "outsideViewedMonth": false,
+      },
+    ],
+    "endWeek": 9,
+    "startWeek": 8,
+  },
+  {
+    "days": [
+      {
+        "date": "29-02-2024",
+        "outsideViewedMonth": false,
+      },
+      {
+        "date": "1-03-2024",
+        "outsideViewedMonth": true,
+      },
+      {
+        "date": "2-03-2024",
+        "outsideViewedMonth": true,
+      },
+      {
+        "date": "3-03-2024",
+        "outsideViewedMonth": true,
+      },
+      {
+        "date": "4-03-2024",
+        "outsideViewedMonth": true,
+      },
+      {
+        "date": "5-03-2024",
+        "outsideViewedMonth": true,
+      },
+      {
+        "date": "6-03-2024",
+        "outsideViewedMonth": true,
+      },
+    ],
+    "endWeek": 10,
+    "startWeek": 9,
+  },
+]
+`;
