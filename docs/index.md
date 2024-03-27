@@ -30,6 +30,6 @@ features:
     details: Powerful api with total control over your date and component behavior
     icon: ✍️
   - title: Lightweight
-    details: Only depends on react and dayjs, weights around ~10kb after gzip
+    details: Only depends on react and dayjs, weights around ~2kb after gzip
     icon: 🪶
 ---
