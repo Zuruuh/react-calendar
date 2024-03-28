@@ -6,6 +6,14 @@ on:
 
 jobs:
   build:
+    strategy:
+      matrix:
+        registry:
+          - url: 'https://registry.npmjs.org'
+            token: NPM_TOKEN
+          - url: 'https://npm.pkg.github.com'
+            token: GH_TOKEN
+
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -13,17 +21,23 @@ jobs:
 
     steps:
       - name: 🛒 Checkout branch
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: ✨ Install bun
-        uses: oven-sh/setup-bun@v1
+        uses: oven-sh/setup-bun@v1.1.1
         with:
-          bun-version: 1.0.21
+          bun-version: 1.0.35
 
-      - uses: actions/cache@v3
-        name: Setup deps cache
+      - name: ✨ Install node
+        uses: actions/setup-node@v4
         with:
-          path: ${{ env.STORE_PATH }}
+          node-version: '20.x'
+          registry-url: '${{ matrix.registry.url }}'
+
+      - uses: actions/cache@v4
+        name: 📦 Setup deps cache
+        with:
+          path: node_modules
           key: ${{ runner.os }}-modules-${{ hashFiles('**/bun.lockb') }}
           restore-keys: |
             ${{ runner.os }}-modules-
@@ -37,4 +51,4 @@ jobs:
       - name: 🔖 Release
         run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_TOKEN}}
+          NODE_AUTH_TOKEN: ${{ secrets[matrix.registry.token] }}

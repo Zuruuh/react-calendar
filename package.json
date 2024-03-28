@@ -1,22 +1,25 @@
 {
+  "$schema": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/package.json",
   "name": "@zuruuh/react-date-picker",
   "private": false,
-  "version": "0.0.1",
+  "version": "0.1.5",
   "type": "module",
-  "types": "dist/index.d.ts",
+  "types": "./dist/index.d.ts",
   "license": "MIT",
-  "files": [
-    "dist",
-    "package.json",
-    "README.md",
-    "LICENSE.txt"
-  ],
+  "homepage": "https://date-picker.zuruh.dev",
+  "files": ["dist", "package.json", "README.md", "LICENSE.txt"],
   "main": "dist/react-date-picker.umd.cjs",
   "module": "dist/react-date-picker.js",
+  "author": {
+    "name": "Zuruh",
+    "email": "zuruh.dev@proton.me",
+    "url": "https://github.com/Zuruuh"
+  },
   "exports": {
     ".": {
       "import": "./dist/react-date-picker.js",
-      "require": "./dist/react-date-picker.umd.cjs"
+      "require": "./dist/react-date-picker.umd.cjs",
+      "types": "./dist/index.d.ts"
     }
   },
   "scripts": {
@@ -27,30 +30,33 @@
     "lint:typescript": "tsc --noEmit true --emitDeclarationOnly false",
     "format": "biome format .",
     "preview": "ladle preview",
-    "preview:build": "ladle build"
+    "preview:build": "ladle build",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "peerDependencies": {
     "dayjs": "^1.11.10",
     "react": "^18.0.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.5.2",
-    "@fontsource/poppins": "^5.0.8",
-    "@happy-dom/global-registrator": "^13.1.4",
-    "@ladle/react": "^4.0.2",
+    "@biomejs/biome": "^1.6.3",
+    "@fontsource/poppins": "^5.0.12",
+    "@happy-dom/global-registrator": "^14.3.8",
+    "@ladle/react": "^4.0.3",
     "@testing-library/dom": "^9.3.4",
-    "@testing-library/react": "^14.1.2",
+    "@testing-library/react": "^14.2.2",
     "@testing-library/user-event": "^14.5.2",
-    "@types/react": "^18.2.48",
-    "@vitejs/plugin-react": "^4.2.1",
-    "bun-types": "1.0.23",
+    "@types/bun": "latest",
+    "@types/react": "^18.2.72",
     "clsx": "^2.1.0",
     "dayjs": "^1.11.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sass": "^1.70.0",
-    "typescript": "^5.3.3",
-    "vite": "^5.0.11",
-    "vite-plugin-dts": "^3.7.1"
+    "sass": "^1.72.0",
+    "typescript": "^5.4.3",
+    "vite": "^5.2.6",
+    "vite-plugin-dts": "^3.7.3",
+    "vitepress": "^1.0.1"
   }
 }

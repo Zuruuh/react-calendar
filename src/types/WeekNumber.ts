@@ -1,2 +1,2 @@
 export type WeekNumber = [number] | [number, number];
-export type WeekNumbers = [number][] | [number, number][];
+export type WeekNumbers = Array<[number]> | Array<[number, number]>;

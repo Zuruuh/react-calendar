@@ -3,7 +3,7 @@ import utc from 'dayjs/plugin/utc';
 import locale from 'dayjs/plugin/localeData';
 import dayjs from 'dayjs';
 import 'dayjs/locale/fr';
-import { DatePickerState } from '../context/DatePickerContext';
+import type { DatePickerState } from '../context/DatePickerContext';
 
 dayjs.extend(week);
 dayjs.extend(utc);
@@ -51,6 +51,7 @@ export function createDatePickerContextState(
       nextMonth: defaultControl,
       prevMonth: defaultControl,
     },
+    altDateFormat: 'dddd D MMMM YYYY',
     ...args,
   };
 }

@@ -1,13 +1,12 @@
 import { test, expect } from 'bun:test';
 import { /*Calendar,*/ generateWeeksBasedOnOverlap } from './Calendar';
-import { type Dayjs } from 'dayjs';
-import { type DatePickerCalendarOverlap } from '../context/DatePickerContext';
+import type { Dayjs } from 'dayjs';
+import type { DatePickerCalendarOverlap } from '../context/DatePickerContext';
 import { day } from '../tests/utils';
-// import { render } from '@testing-library/react';
 
 type Output = [Dayjs, DatePickerCalendarOverlap];
 
-const expectedOutputs: Output[] = [
+const expectedOutputs: Array<Output> = [
   [day({ month: 1 }), 'overlap'],
   [day({ month: 2 }), 'overlap'],
   [day({ month: 3 }), 'overlap'],

@@ -3,6 +3,7 @@
 }
 
 .calendar {
+  background-color: #fff;
   border-radius: 5px;
   border: solid black 1px;
   position: absolute;
@@ -30,7 +31,7 @@
 
 .day {
   display: flex;
- 
+
   button {
     width: 30px;
     height: 30px;

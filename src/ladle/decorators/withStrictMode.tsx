@@ -1,4 +1,4 @@
-import { StoryDecorator } from '@ladle/react';
+import type { StoryDecorator } from '@ladle/react';
 import { StrictMode } from 'react';
 
 export const withStrictMode: StoryDecorator = (Component) => (

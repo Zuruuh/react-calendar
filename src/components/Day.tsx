@@ -29,6 +29,7 @@ export const Day: FC<DayProps> = ({ children }) => {
     maximumSelectableDate,
     overlap,
     dayjs,
+    altDateFormat,
   } = useDatePickerContext();
   const { date, corners } = useDayContext();
 
@@ -65,8 +66,7 @@ export const Day: FC<DayProps> = ({ children }) => {
   const isOutOfRange =
     date.isBefore(minimumSelectableDate) || date.isAfter(maximumSelectableDate);
 
-  // TODO: Make this configureable
-  const alt = date.format('dddd D MMMM YYYY');
+  const alt = date.format(altDateFormat);
 
   const isOverlapPlaceholder =
     overlap === 'no-overlap-with-offset' &&

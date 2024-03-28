@@ -4,7 +4,7 @@ import { DayContext } from '../context/DayContext';
 import { Day } from './Day';
 import { createDatePickerContextState, day } from '../tests/utils';
 import { DatePickerContext } from '../context/DatePickerContext';
-import { type Dayjs } from 'dayjs';
+import type { Dayjs } from 'dayjs';
 import userEvent from '@testing-library/user-event';
 
 test('Day component', async () => {

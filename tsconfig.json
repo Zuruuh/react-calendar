@@ -26,5 +26,5 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", ".ladle"]
+  "include": ["src", ".ladle/components.tsx"]
 }
